@@ -32,13 +32,9 @@ const Button = styled('button')`
       padding: 0.5rem 0.2rem;
     `}
 
-  ${({ narrow, theme }) =>
+  ${({ narrow }) =>
     narrow &&
     css`
-      background: ${theme.color.accent.primary.dark};
-      font-size: ${theme.font.size.label.secondary};
-      max-height: 40px;
-      padding: 0.1rem;
       width: initial;
       min-width: 100px;
     `}

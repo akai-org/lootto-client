@@ -39,9 +39,10 @@ export default function GameScreen() {
               <img src="/images/Chest.png" />
               <div className="chest__text">
                 {chest.name && <strong>{chest.name}</strong>}
-                {chest.price && <span>{chest.price}</span>}
+                {/* {chest.price && <span>{chest.price}</span>} */}
+                {<span>{chest.price}</span>}
               </div>
-              <Button primary narrow>
+              <Button primary small narrow>
                 otwórz
               </Button>
             </Box>
