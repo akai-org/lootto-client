@@ -10,11 +10,12 @@ import HomeScreen from "./pages/HomeScreen";
 import LoginScreen from "./pages/LoginScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 import AchievementsScreen from "./pages/AchievementsScreen";
+import TutorialScreen from "./pages/TutorialScreen";
 import GameScreen from "./pages/GameScreen";
 import MapScreen from "./pages/MapScreen";
 import PrivateRoute from "./components/PrivateRoute";
-
 import GlobalStyle from "./styles/GlobalStyle";
+import ExchangeScreen from "./pages/ExchangeScreen";
 
 injectGlobal(GlobalStyle);
 
@@ -25,8 +26,10 @@ render(
         <Switch>
           <Route exact path="/" component={HomeScreen} />
           <Route path="/login" component={LoginScreen} />
+          <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/settings" component={SettingsScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
+          <PrivateRoute path="/exchange" component={ExchangeScreen} />
           <PrivateRoute path="/game" component={GameScreen} />
           <PrivateRoute path="/map" component={MapScreen} />
         </Switch>

@@ -8,6 +8,7 @@ const GlobalStyle = `
   }
 
   body {
+    background: ${theme.color.accent.primary.base};
     color: ${theme.color.text.base};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.base};
@@ -17,7 +18,7 @@ const GlobalStyle = `
 
   h1, h2, h3, h4, h5, h6 {
     color: ${theme.color.text.primary};
-    line-height: ${theme.font.lineHeight.caption}
+    line-height: ${theme.font.lineHeight.heading}
   }
 
   h1 {

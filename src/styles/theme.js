@@ -18,12 +18,10 @@ const theme = {
     },
     text: {
       primary: 'rgb(255, 255, 255)',
-      secondary: '#aaa',
-      tertiary: '#fff',
-      base: '#666'
+      base: '#fff',
     },
     elements: {
-      line: '#ddd',
+      line: 'rgba(255, 255, 255, 0.25)',
       icon: {
         base: '#aaa',
         active: '#222'
@@ -48,7 +46,7 @@ const theme = {
       }
     },
     weight: {
-      base: '500',
+      base: '400',
       bold: '700'
     },
     lineHeight: {
@@ -59,8 +57,12 @@ const theme = {
     }
   },
   size: {
-    borderRadius: '30px',
-    line: '2px'
+    borderRadius: {
+      max: '50px',
+      big: '12px',
+      small: '6px',
+    },
+    line: '3px'
   },
   effects: {
     shadow: '0 3px 15px 0 rgba(0, 0, 0, 0.06)',
