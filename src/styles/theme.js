@@ -21,7 +21,7 @@ const theme = {
       base: '#fff',
     },
     elements: {
-      line: '#ddd',
+      line: 'rgba(255, 255, 255, 0.25)',
       icon: {
         base: '#aaa',
         active: '#222'
@@ -58,7 +58,7 @@ const theme = {
   },
   size: {
     borderRadius: {
-      max: '30px',
+      max: '50px',
       big: '12px',
       small: '6px',
     },

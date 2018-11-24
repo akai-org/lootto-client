@@ -30,17 +30,20 @@ class TutorialScreen extends Component {
 
   render() {
     return (
-      <Carousel>
-        {
-          this.slides.map(({ title, text, image, buttonText }, index) => (
-            <Layout key={index} spanned distributed narrow>
-              <Image big src={image} />
-              <Title>{title}</Title>
-              <Paragraph>{text}</Paragraph>
-            </Layout>
-          ))
-        }
-      </Carousel>
+      <Layout narrow spanned>
+        <Carousel>
+          {
+            this.slides.map(({ title, text, image }, index) => (
+              <div key={index} spanned distributed narrow>
+                <Image big src={image} />
+                <Title>{title}</Title>
+                <Paragraph>{text}</Paragraph>
+              </div>
+            ))
+          }
+        </Carousel>
+      </Layout>
+      
     );
   }
 }

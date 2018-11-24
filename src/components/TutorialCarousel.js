@@ -14,29 +14,32 @@ const Content = styled('div')`
 `;
 
 const Indicators = styled('ul')`
-  margin: 30px 0 0;
   padding: 0;
   list-style-type: none;
   display: flex;
-  justify-content: center;
+  margin: 0 -1rem 30px;
 
   > li {
+    flex: 1;
     padding: 0 1rem;
   }
 `;
 
 const IndicatorButton = styled('button')`
+  background: none;
+  outline: none;
+  border: none;
   box-sizing: border-box;
   position: relative;
   padding: 1rem;
   height: 10px;
-  width: 40px;
+  width: 100%;
   font-size: 0;
   &::after {
     display: block;
     content: "";
-    background: ${({ theme }) => theme.color.elements.border};
-    height: 2px;
+    background: ${({ theme }) => theme.color.elements.line};
+    height: ${({ theme }) => theme.size.line};
     left: 0;
     position: absolute;
     top: 50%;
@@ -44,6 +47,7 @@ const IndicatorButton = styled('button')`
     width: 100%;
     transition: background-color ${({ theme }) => theme.effects.transition.quick};
   }
+
   ${({ theme, active }) => active && css`
     &::after {
       background: ${theme.color.accent.primary.light};
@@ -80,7 +84,7 @@ class Carousel extends Component {
   }
 
   isLastSlide() {
-    return this.state.currentSlide === this.props.children.length;
+    return this.state.currentSlide === this.props.children.length - 1;
   }
 
   render() {
@@ -103,6 +107,7 @@ class Carousel extends Component {
           this.isLastSlide() ?
           <Button
             as={Link}
+            primary
             to="/home"
           >
             Zaczynamy
@@ -114,7 +119,6 @@ class Carousel extends Component {
             Dalej
           </Button>
         }
-        
       </Wrapper>
     );
   }

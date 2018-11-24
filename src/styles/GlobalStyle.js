@@ -18,7 +18,7 @@ const GlobalStyle = `
 
   h1, h2, h3, h4, h5, h6 {
     color: ${theme.color.text.primary};
-    line-height: ${theme.font.lineHeight.caption}
+    line-height: ${theme.font.lineHeight.heading}
   }
 
   h1 {
