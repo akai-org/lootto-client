@@ -13,7 +13,7 @@ const MenuBox = styled('nav')`
   left: 0;
   bottom: 0;
   width: 100%;
-  z-index: 201;
+  z-index: 1201;
   color: #fff;
   
   transition: transform .5s ease;
@@ -34,7 +34,7 @@ const Overlay = styled('div')`
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.6);
-    z-index: 200;
+    z-index: 1200;
   `}
 `;
 
