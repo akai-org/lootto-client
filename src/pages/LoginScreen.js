@@ -8,8 +8,6 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 import { Redirect } from "react-router-dom";
 import useCookie from "../hooks/useCookie";
 
-// const cookies = new Cookies();
-
 export default function LoginScreen(props) {
   const { history } = props;
   const [token, setToken] = useCookie("token", "");

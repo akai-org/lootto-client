@@ -6,7 +6,7 @@ export default asd => (
     params={{
       particles: {
         number: {
-          value: 160,
+          value: 120,
           density: {
             enable: true,
             value_area: 1500
@@ -21,7 +21,7 @@ export default asd => (
           speed: 0.06
         },
         size: {
-          value: 3.5
+          value: 2.5
         },
         opacity: {
           anim: {

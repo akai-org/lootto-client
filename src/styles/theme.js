@@ -2,12 +2,8 @@ const theme = {
   color: {
     accent: {
       primary: {
-        base: '#0f243B',
-        light: '#4ee1ec'
-      },
-      secondary: {
-        base: '#c344e9',
-        light: '#f09ce6'
+        base: '#0F243B',
+        light: '#4EE1EC'
       },
       error: '#f21a2c'
     },
