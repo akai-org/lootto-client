@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import useWallet from "../hooks/useWallet";
 import Navbar from "../components/Navbar";
 import MainMap from "../components/MainMap";
@@ -15,9 +14,7 @@ const GameScreen = props => {
 
   return (
     <>
-      <div>
-        <Navbar stars={12} />
-      </div>
+      <Navbar stars={12} />
       <MainMap location={props.location} />
     </>
   );
