@@ -3,7 +3,6 @@ import { Map, TileLayer, Marker, Popup, Rectangle } from 'react-leaflet';
 import styled from 'react-emotion';
 import '../../node_modules/leaflet/dist/leaflet.css';
 import { icon } from 'leaflet';
-import config from '../config.json';
 
 const markerPlanet1 = icon({
   iconUrl: require('../assets/planet1.png'),
@@ -35,29 +34,30 @@ const MapScreen = props => {
   const [zoom, setZoom] = useState(16);
 
   // markers data
-  const [fetchMarkers, setFetchMarkers] = useState(false);
   const [markers, setMarkers] = useState([]);
+
+  // initial fetch
   useEffect(() => {
-    if (!fetchMarkers) {
-      setFetchMarkers(true);
-      fetch(`${config.environment.server}/planets/`)
-        .then(res => res.json())
-        .then(({ planetId, name, type, longitude, latitude }) => {
-          return {
-            planetId,
-            name,
-            type,
-            tags: ['default'],
-            show: true,
-            coords: [longitude, latitude]
-          };
-        })
-        .then(markers => {
-          console.log({ markers });
-          setMarkers(markers);
-        });
-    }
-  });
+    fetchMarkers();
+  }, []);
+  const fetchMarkers = () => {
+    fetch(`${process.env.REACT_APP_API}/planet`)
+      .then(res => res.json())
+      .then(data =>
+        data.map(({ planetId, name, type, longitude, latitude }) => ({
+          planetId,
+          name,
+          type,
+          tags: ['default'],
+          show: true,
+          coordinates: [longitude, latitude]
+        }))
+      )
+      .then(mappedMarkers => {
+        setMarkers(mappedMarkers);
+      });
+  };
+
   const filterMarkers = (tag, markers) => {
     return markers.map(marker => {
       const filteredMarker = { ...marker };

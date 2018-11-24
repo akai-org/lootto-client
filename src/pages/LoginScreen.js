@@ -72,6 +72,7 @@ export default function LoginScreen() {
           appId="1088597931155576"
           autoLoad={true}
           fields="name,email,picture"
+          isMobile={false}
           callback={response => {
             setToken(response.accessToken);
           }}
