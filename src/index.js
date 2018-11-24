@@ -6,13 +6,12 @@ import { injectGlobal } from "emotion";
 import { ThemeProvider } from "emotion-theming";
 import theme from "./styles/theme";
 import * as serviceWorker from "./serviceWorker";
-import HomeScreen from "./pages/HomeScreen";
 import LoginScreen from "./pages/LoginScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 import AchievementsScreen from "./pages/AchievementsScreen";
 import TutorialScreen from "./pages/TutorialScreen";
 import GameScreen from "./pages/GameScreen";
-import MapScreen from "./pages/MapScreen";
+import PointSelectedScreen from "./pages/PointSelectedScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import GlobalStyle from "./styles/GlobalStyle";
 import ExchangeScreen from "./pages/ExchangeScreen";
@@ -25,18 +24,17 @@ render(
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" component={HomeScreen} />
-          <Route path="/login" component={LoginScreen} />
+          <Route exact path="/" component={LoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/settings" component={SettingsScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
           <PrivateRoute path="/exchange" component={ExchangeScreen} />
           <PrivateRoute path="/game" component={GameScreen} />
-          <PrivateRoute path="/map" component={MapScreen} />
+          <PrivateRoute path="/point" component={PointSelectedScreen} />
         </Switch>
       </Router>
     </Fragment>
   </ThemeProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 serviceWorker.unregister();
