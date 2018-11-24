@@ -16,6 +16,7 @@ import MapScreen from "./pages/MapScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import GlobalStyle from "./styles/GlobalStyle";
 import ExchangeScreen from "./pages/ExchangeScreen";
+import UnboxingScreen from "./pages/UnboxingScreen";
 
 injectGlobal(GlobalStyle);
 
