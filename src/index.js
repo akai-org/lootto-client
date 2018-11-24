@@ -6,7 +6,6 @@ import { injectGlobal } from "emotion";
 import { ThemeProvider } from "emotion-theming";
 import theme from "./styles/theme";
 import * as serviceWorker from "./serviceWorker";
-import HomeScreen from "./pages/HomeScreen";
 import LoginScreen from "./pages/LoginScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 import AchievementsScreen from "./pages/AchievementsScreen";
@@ -24,8 +23,7 @@ render(
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" component={HomeScreen} />
-          <Route path="/login" component={LoginScreen} />
+          <Route exact path="/" component={LoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/settings" component={SettingsScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />

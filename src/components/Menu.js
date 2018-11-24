@@ -48,7 +48,7 @@ const MenuLink = styled(Link)`
   display: block;
   line-height: ${({ theme }) => theme.font.lineHeight.caption};
   color: ${({ theme }) => theme.color.text.tertiary};
-  font-size: ${({ theme }) => theme.font.size.label.tertiary};
+  font-size: ${({ theme }) => theme.font.size.label.secondary};
   text-transform: uppercase;
   font-weight: ${({ theme }) => theme.font.weight.bold};
 

@@ -1,6 +1,6 @@
-// import Cookies from 'universal-cookie';
 import React, { Fragment } from "react";
 import Layout from "../components/Layout";
+import PropTypes from "prop-types";
 import Logo from "../components/Logo";
 import Button from "../components/Button";
 import Particles from "../components/Particles.js";
@@ -10,8 +10,10 @@ import useCookie from "../hooks/useCookie";
 
 // const cookies = new Cookies();
 
-export default function LoginScreen() {
-  const [token, setToken] = useCookie("token", "");
+export default function LoginScreen(props) {
+  const { history } = props;
+  const [, setToken] = useCookie("token", "");
+  const [tutorialCompleted] = useCookie("tutorialCompleted", false);
 
   return (
     <Fragment>
@@ -23,7 +25,15 @@ export default function LoginScreen() {
           fields="name,email,picture"
           isMobile={false}
           callback={response => {
-            setToken(response.accessToken);
+            if (response.accessToken) {
+              setToken(response.accessToken);
+
+              if (tutorialCompleted) {
+                history.push("/game");
+              } else {
+                history.push("/tutorial");
+              }
+            }
           }}
           render={renderProps => (
             <Button
@@ -40,3 +50,9 @@ export default function LoginScreen() {
     </Fragment>
   );
 }
+
+LoginScreen.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+};

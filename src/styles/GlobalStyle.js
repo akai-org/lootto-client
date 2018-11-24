@@ -44,6 +44,7 @@ const GlobalStyle = `
     cursor: pointer;
     text-decoration: none;
     line-height: inherit;
+    font-family: inherit;
   }
 
   img {
