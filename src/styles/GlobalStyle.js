@@ -9,6 +9,7 @@ const GlobalStyle = `
   }
 
   body {
+    background: ${({ theme }) => theme.color.accent.primary.base};
     color: ${({ theme }) => theme.color.text.base};
     font-family: ${({ theme }) => theme.font.family};
     font-weight: ${({ theme }) => theme.font.weight.base};
