@@ -11,10 +11,11 @@ import SettingsScreen from './pages/SettingsScreen';
 import AchievementsScreen from './pages/AchievementsScreen';
 import TutorialScreen from './pages/TutorialScreen';
 import GameScreen from './pages/GameScreen';
-import PlanetScreen from './pages/PlanetScreen';
 import PrivateRoute from './components/PrivateRoute';
 import GlobalStyle from './styles/GlobalStyle';
 import ExchangeScreen from './pages/ExchangeScreen';
+import UnboxingScreen from './pages/UnboxingScreen';
+import PlanetScreen from './pages/PlanetScreen';
 
 injectGlobal(GlobalStyle);
 
@@ -23,7 +24,7 @@ render(
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" component={PlanetScreen} />
+          <Route exact path="/" component={LoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/settings" component={SettingsScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
