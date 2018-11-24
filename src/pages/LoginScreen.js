@@ -23,6 +23,7 @@ export default function LoginScreen() {
           fields="name,email,picture"
           isMobile={false}
           callback={response => {
+            console.log(response);
             setToken(response.accessToken);
           }}
           render={renderProps => (
