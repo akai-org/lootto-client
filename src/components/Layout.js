@@ -34,10 +34,10 @@ const Layout = styled('div')`
       justify-content: space-between;
     `}
 
-  ${({ light }) =>
+  ${({ light, theme }) =>
     light &&
     css`
-      background: ${({ theme }) => theme.color.background.light};
+      background: ${theme.color.background.light};
     `}
 `;
 
