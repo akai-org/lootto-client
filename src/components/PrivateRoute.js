@@ -33,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   }
 
   setTimeout(getLocation, options.timeout);
-  return <Route {...rest} render={props => <Component {...props} />} />;
+  return <Route {...rest} render={props => <Component {...props} location={location}/>} />;
 };
 
 export default PrivateRoute;
