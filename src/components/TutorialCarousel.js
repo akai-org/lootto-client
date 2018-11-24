@@ -74,7 +74,7 @@ class Carousel extends Component {
       draggable: true,
       multipleDrag: true,
       threshold: 20,
-      loop: true,
+      loop: false,
       onChange: () => {
         this.setState({
           currentSlide: this.slider.currentSlide,
