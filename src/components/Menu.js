@@ -84,14 +84,6 @@ const logout = () => {
   setToken("");
 };
 
-{
-  /* <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
-<MenuUl>
-  {options.map(({ label, path }) => <li key={path}><MenuLink to={path}>{label}</MenuLink></li>)}
-</MenuUl>
-<Button tertiary>Wyloguj</Button> */
-}
-
 const Menu = ({ isVisible, onClose }) => (
   <>
     <MenuBox isVisible={isVisible}>
