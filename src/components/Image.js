@@ -3,11 +3,16 @@ import styled, { css } from 'react-emotion';
 const Image = styled('img')`
   display: block;
 
-  ${({ big, theme }) =>
+  ${({ big }) =>
     big &&
     css`
-      background: ${theme.color.accent.primary.light};
-      color: ${theme.color.accent.primary.base};
+      width: 75%;
+    `}
+
+  ${({ centered }) =>
+    centered &&
+    css`
+      margin: 0 auto;
     `}
 `;
 
