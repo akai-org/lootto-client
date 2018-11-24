@@ -18,7 +18,7 @@ const FloatingDiv = styled('div')`
 `;
 
 const Loading = () => (
-  <Layout distributed spanned narrow >
+  <Layout distributed spanned narrow>
     <FloatingDiv>
       <img src={astronaut} alt="" />
     </FloatingDiv>

@@ -57,16 +57,10 @@ const MenuLink = styled(Link)`
   transition: .3s;
 
   &:hover {
-    background: ${props => props.theme.color.accent.primary.light};
-    color: ${props => props.theme.color.accent.primary.base};
+    color: ${props => props.theme.color.accent.primary.light};
   }
 `;
 
-const Wrapper = styled('div')`
-  display: block;
-  margin: 0;
-  padding: 0;
-`;
 
 const options = [
   { label: 'Twoje konto', path: '/account' },
@@ -79,19 +73,14 @@ const Menu = ({ isVisible, onClose }) => (
   <>
     <MenuBox isVisible={isVisible}>
       <Layout>
-        <Wrapper>
-          <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
-        </Wrapper>
+        <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
         <MenuUl>
-          {options.map(({ label, path }) => <li key={path}><MenuLink to={path}><Wrapper>{label}</Wrapper></MenuLink></li>)}
+          {options.map(({ label, path }) => <li key={path}><MenuLink to={path}>{label}</MenuLink></li>)}
         </MenuUl>
-        <Wrapper>
-          <Button tertiary>Wyloguj</Button>
-        </Wrapper>
+        <Button tertiary>Wyloguj</Button>
       </Layout>
     </MenuBox>
-    <Overlay isVisible={isVisible} onClick={onClose}>
-    </Overlay>
+    <Overlay isVisible={isVisible} onClick={onClose} />
   </>
 );
 
