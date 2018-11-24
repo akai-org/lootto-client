@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Map, TileLayer, Marker, Popup, Rectangle } from 'react-leaflet';
 import styled from 'react-emotion';
 import '../../node_modules/leaflet/dist/leaflet.css';
@@ -14,39 +14,15 @@ const markerPlanet2 = icon({
   iconSize: [62.975, 39.765]
 });
 
-const iconTypeToIcon = iconType => {
-  if (iconType === 'planet1') return markerPlanet1;
-  else if (iconType === 'planet2') return markerPlanet2;
+const iconTypeToIcon = type => {
+  if (type === 'planet1') return markerPlanet1;
+  else if (type === 'planet2') return markerPlanet2;
 };
-
-const data = [
-  {
-    name: 'marker1',
-    tags: ['t1', 't2'],
-    iconType: 'planet1',
-    show: true,
-    coordinates: [52.400512, 16.950136]
-  },
-  {
-    name: 'marker2',
-    tags: ['t2'],
-    iconType: 'planet1',
-    show: true,
-    coordinates: [52.402512, 16.950136]
-  },
-  {
-    name: 'marker3',
-    tags: ['t1'],
-    iconType: 'planet2',
-    show: true,
-    coordinates: [52.404512, 16.950136]
-  }
-];
 
 const MapWrapper = styled('div')`
   .leaflet-container {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 90px);
   }
 `;
 
@@ -58,7 +34,30 @@ const MapScreen = props => {
   const [zoom, setZoom] = useState(16);
 
   // markers data
-  const [markers, setMarkers] = useState(data);
+  const [markers, setMarkers] = useState([]);
+
+  // initial fetch
+  useEffect(() => {
+    fetchMarkers();
+  }, []);
+  const fetchMarkers = () => {
+    fetch(`${process.env.REACT_APP_API}/planet`)
+      .then(res => res.json())
+      .then(data =>
+        data.map(({ planetId, name, type, longitude, latitude }) => ({
+          planetId,
+          name,
+          type,
+          tags: ['default'],
+          show: true,
+          coordinates: [longitude, latitude]
+        }))
+      )
+      .then(mappedMarkers => {
+        setMarkers(mappedMarkers);
+      });
+  };
+
   const filterMarkers = (tag, markers) => {
     return markers.map(marker => {
       const filteredMarker = { ...marker };
@@ -75,17 +74,19 @@ const MapScreen = props => {
             attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community"
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
           />
-          {markers.map(marker =>
-            marker.show ? (
-              <Marker
-                key={marker.name}
-                position={marker.coordinates}
-                icon={iconTypeToIcon(marker.iconType)}
-              >
-                <Popup>You are here</Popup>
-              </Marker>
-            ) : null
-          )}
+          {!!markers.length
+            ? markers.map(marker =>
+                marker.show ? (
+                  <Marker
+                    key={marker.name}
+                    position={marker.coordinates}
+                    icon={iconTypeToIcon(marker.type)}
+                  >
+                    <Popup>You are here</Popup>
+                  </Marker>
+                ) : null
+              )
+            : null}
           <Rectangle bounds={[[-150, -150], [150, 150]]} color={'#4ee1ec'} />
         </Map>
       </MapWrapper>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import Siema from 'siema';
 import Button from './Button';
-import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
+import useCookie from "../hooks/useCookie";
 
 const Wrapper = styled('div')`
   margin-top: 30px;
@@ -55,7 +57,7 @@ const IndicatorButton = styled('button')`
   `}
 `;
 
-class Carousel extends Component {
+class TutorialCarousel extends Component {
   constructor(props) {
     super(props);
 
@@ -74,7 +76,7 @@ class Carousel extends Component {
       draggable: true,
       multipleDrag: true,
       threshold: 20,
-      loop: true,
+      loop: false,
       onChange: () => {
         this.setState({
           currentSlide: this.slider.currentSlide,
@@ -88,6 +90,8 @@ class Carousel extends Component {
   }
 
   render() {
+    const { history, setCookie } = this.props;
+
     return (
       <Wrapper>
         <Content>
@@ -106,9 +110,11 @@ class Carousel extends Component {
         {
           this.isLastSlide() ?
           <Button
-            as={Link}
             primary
-            to="/home"
+            onClick={() => {
+              setCookie(true);
+              history.push('/game');
+            }}
           >
             Zaczynamy
           </Button>
@@ -124,4 +130,16 @@ class Carousel extends Component {
   }
 }
 
-export default Carousel;
+TutorialCarousel.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+};
+
+const TutorialWithCookie = (props) => {
+  const [, setTutorialCompleted] = useCookie("tutorialCompleted", false);
+  
+  return <TutorialCarousel setCookie={v => setTutorialCompleted(v)} {...props} />
+}
+
+export default withRouter(TutorialWithCookie);
