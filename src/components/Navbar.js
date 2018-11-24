@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "react-emotion";
 
 import Menu from "./Menu";
+import IconButton from "./IconButton";
 
 import burger from "../assets/burger.svg";
 import star from "../assets/star.svg";
@@ -15,7 +16,7 @@ const Header = styled('header')`
 `;
 
 const MenuIcon = ({ onClick }) => (
-  <a onClick={onClick}><img src={burger} width="25" height="25" alt="Pokaż menu" /></a>
+  <IconButton onClick={onClick} src={burger} width="25" height="25" alt="Pokaż menu" />
 );
 
 const StarCount = styled('div')`

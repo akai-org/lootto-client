@@ -47,7 +47,6 @@ const GlobalStyle = `
   }
 
   img {
-    height: auto;
     max-width: 100%;
   }
 `;
