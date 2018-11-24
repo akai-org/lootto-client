@@ -5,8 +5,9 @@ import cross from "../assets/cross.svg";
 import Button from "./Button";
 import IconButton from "./IconButton";
 import Layout from "./Layout";
+import useCookie from "../hooks/useCookie";
 
-const MenuBox = styled('nav')`
+const MenuBox = styled("nav")`
   background: ${props => props.theme.color.accent.primary.base};
   position: fixed;
   top: 0;
@@ -15,17 +16,21 @@ const MenuBox = styled('nav')`
   width: 100%;
   z-index: 1201;
   color: #fff;
-  
-  transition: transform .5s ease;
-  ${props => props.isVisible || `
+
+  transition: transform 0.5s ease;
+  ${props =>
+    props.isVisible ||
+    `
     transform: translateX(-100%);
   `}
 `;
 
-const Overlay = styled('div')`
-  transition: background .5s ease;
+const Overlay = styled("div")`
+  transition: background 0.5s ease;
   display: none;
-  ${props => props.isVisible && `
+  ${props =>
+    props.isVisible &&
+    `
     display: block;
     cursor: pointer;
     position: fixed;
@@ -38,7 +43,7 @@ const Overlay = styled('div')`
   `}
 `;
 
-const MenuUl = styled('ul')`
+const MenuUl = styled("ul")`
   margin: 15vh 0;
   padding: 0;
   list-style-type: none;
@@ -54,44 +59,61 @@ const MenuLink = styled(Link)`
   padding: 10px 0;
   margin: 30px 0;
 
-  transition: .3s;
+  transition: 0.3s;
 
   &:hover {
-    background: ${props => props.theme.color.accent.primary.light};
-    color: ${props => props.theme.color.accent.primary.base};
+    color: ${props => props.theme.color.accent.primary.light};
   }
 `;
 
-const Wrapper = styled('div')`
+const Wrapper = styled("div")`
   display: block;
   margin: 0;
   padding: 0;
 `;
 
 const options = [
-  { label: 'Twoje konto', path: '/account' },
-  { label: 'Kantor', path: '/exchange' },
-  { label: 'Bonusy', path: '/powerups' },
-  { label: 'Osiągnięcia', path: '/achievements' }
+  { label: "Twoje konto", path: "/account" },
+  { label: "Kantor", path: "/exchange" },
+  { label: "Bonusy", path: "/powerups" },
+  { label: "Osiągnięcia", path: "/achievements" }
 ];
+
+const logout = () => {
+  const [_, setToken] = useCookie("token", "");
+  setToken("");
+};
 
 const Menu = ({ isVisible, onClose }) => (
   <>
     <MenuBox isVisible={isVisible}>
       <Layout>
         <Wrapper>
-          <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
+          <IconButton
+            src={cross}
+            width="25"
+            height="25"
+            alt="Ukryj menu"
+            onClick={onClose}
+          />
         </Wrapper>
         <MenuUl>
-          {options.map(({ label, path }) => <li key={path}><MenuLink to={path}><Wrapper>{label}</Wrapper></MenuLink></li>)}
+          {options.map(({ label, path }) => (
+            <li key={path}>
+              <MenuLink to={path}>
+                <Wrapper>{label}</Wrapper>
+              </MenuLink>
+            </li>
+          ))}
         </MenuUl>
         <Wrapper>
-          <Button tertiary>Wyloguj</Button>
+          <Button onClick={logout} tertiary>
+            Wyloguj
+          </Button>
         </Wrapper>
       </Layout>
     </MenuBox>
-    <Overlay isVisible={isVisible} onClick={onClose}>
-    </Overlay>
+    <Overlay isVisible={isVisible} onClick={onClose} />
   </>
 );
 

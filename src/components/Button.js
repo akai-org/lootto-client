@@ -14,7 +14,8 @@ const Button = styled('button')`
   width: 100%;
   font-weight: ${({ theme }) => theme.font.weight.bold};
   background: none;
-  border: ${({ theme }) => theme.size.line} solid ${({ theme }) => theme.color.accent.primary.light};
+  border: ${({ theme }) => theme.size.line} solid
+    ${({ theme }) => theme.color.accent.primary.light};
   color: ${({ theme }) => theme.color.text.primary};
 
   ${({ primary, theme }) =>
@@ -29,6 +30,17 @@ const Button = styled('button')`
     css`
       font-size: ${theme.font.size.label.tertiary};
       padding: 0.5rem 0.2rem;
+    `}
+
+  ${({ narrow, theme }) =>
+    narrow &&
+    css`
+      background: ${theme.color.accent.primary.dark};
+      font-size: ${theme.font.size.label.secondary};
+      max-height: 40px;
+      padding: 0.1rem;
+      width: initial;
+      min-width: 100px;
     `}
 `;
 

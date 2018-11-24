@@ -8,9 +8,9 @@ export default function useChests() {
     };
   });
 
-  const setToken = value => {
+  const setChests = value => {
     setInnerValue(value);
   };
 
-  return [item, setToken];
+  return [item, setChests];
 }

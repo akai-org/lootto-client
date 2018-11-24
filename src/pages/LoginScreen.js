@@ -5,19 +5,25 @@ import Logo from "../components/Logo";
 import Button from "../components/Button";
 import Particles from "../components/Particles.js";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-
-import useCookie from '../hooks/useCookie';
+import { Redirect } from "react-router-dom";
+import useCookie from "../hooks/useCookie";
 
 export default function LoginScreen(props) {
   const { history } = props;
-  const [, setToken] = useCookie("token", "");
+  const [token, setToken] = useCookie("token", "");
   const [tutorialCompleted] = useCookie("tutorialCompleted", false);
+
+  if (token) return <Redirect to="/game" />;
 
   return (
     <Fragment>
       <Particles />
       <Layout distributed spanned narrow>
-        <Logo welcome title="Lootto" subtitle="Rozpocznij z nami kosmiczną eksplorację Lootto." />
+        <Logo
+          welcome
+          title="Lootto"
+          subtitle="Witamy w grze miejskiej wykorzystującej goelokalizację, inspirowanej Lotto, w której wygrasz prawdziwe pieniądze i będziesz się świetnie bawić z przyjaciółmi!"
+        />
         <FacebookLogin
           appId="352388892232894"
           autoLoad={true}
@@ -25,13 +31,24 @@ export default function LoginScreen(props) {
           isMobile={false}
           callback={response => {
             if (response.accessToken) {
+              console.log(response);
+
               setToken(response.accessToken);
 
-              if (tutorialCompleted) {
-                history.push("/game");
-              } else {
-                history.push("/tutorial");
-              }
+              fetch(`${process.env.REACT_ENV_API}/register`, {
+                method: "POST",
+                body: JSON.stringify({
+                  t: response.accessToken
+                })
+              })
+                .then(res => res.json())
+                .then(json => {
+                  if (tutorialCompleted) {
+                    history.push("/game");
+                  } else {
+                    history.push("/tutorial");
+                  }
+                });
             }
           }}
           render={renderProps => (
