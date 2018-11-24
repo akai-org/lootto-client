@@ -1,6 +1,0 @@
-{
-  "environment": {
-    "client": "https://lootto.netlify.com",
-    "server": "http://localhost:3001"
-  }
-}
