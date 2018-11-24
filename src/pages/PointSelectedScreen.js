@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useWallet from '../hooks/useWallet';
+import useChests from '../hooks/useChests';
 import Navbar from '../components/Navbar';
+import Chest from '../components/Chest';
 
 export default function GameScreen() {
   const [wallet, setWallet] = useWallet();
+  const [chests, setChests] = useChests();
+
+  if (!chests.loaded) {
+    const pointId = 4;
+    fetch(`${process.env.REACT_APP_API}/point/${pointId}`)
+      .then(res => res.json())
+      .then(data => setChests({ ...data.chests, loaded: true }));
+  }
 
   if (!wallet.loaded) {
     fetch(`${process.env.REACT_APP_API}/user`)
@@ -15,9 +25,9 @@ export default function GameScreen() {
   return (
     <div>
       <Navbar stars={wallet.stars} />
-      <Link to="/">Wróć na stronę główną!</Link>
-      <Link to="/">Osiągnięcia!</Link>
-      <Link to="/">Ustawienia!</Link>
+      {chests.map(chest => (
+        <Chest />
+      ))}
     </div>
   );
 }

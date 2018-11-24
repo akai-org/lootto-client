@@ -1,24 +1,24 @@
 // import Cookies from 'universal-cookie';
-import React, { Fragment } from "react";
-import Layout from "../components/Layout";
-import Logo from "../components/Logo";
-import Button from "../components/Button";
-import Particles from "../components/Particles.js";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import React, { Fragment } from 'react';
+import Layout from '../components/Layout';
+import Logo from '../components/Logo';
+import Button from '../components/Button';
+import Particles from '../components/Particles.js';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
-import useCookie from "../hooks/useCookie";
+import useCookie from '../hooks/useCookie';
 
 // const cookies = new Cookies();
 
 export default function LoginScreen() {
-  const [token, setToken] = useCookie("token", "");
+  const [token, setToken] = useCookie('token', '');
 
   return (
     <Fragment>
       <Layout distributed spanned narrow>
         <Logo welcome title="Lootto" subtitle="get rekt." />
         <FacebookLogin
-          appId="1088597931155576"
+          appId="352388892232894"
           autoLoad={true}
           fields="name,email,picture"
           isMobile={false}
