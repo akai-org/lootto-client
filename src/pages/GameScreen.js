@@ -14,8 +14,6 @@ export default function GameScreen() {
       .then(data => setWallet({ ...data.wallet, loaded: true }));
   }
 
-  console.log(`${config.environment.server}/user`, wallet);
-
   return (
     <div>
       <Navbar stars={wallet.stars} />
