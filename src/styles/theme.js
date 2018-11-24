@@ -2,7 +2,7 @@ const theme = {
   color: {
     accent: {
       primary: {
-        base: '#0f2432',
+        base: '#0f243B',
         light: '#4ee1ec'
       },
       secondary: {
@@ -18,9 +18,10 @@ const theme = {
     },
     text: {
       primary: 'rgb(255, 255, 255)',
-      base: '#fff',
+      base: '#fff'
     },
     elements: {
+      box: 'rgba(255, 255, 255, 0.08)',
       line: 'rgba(255, 255, 255, 0.25)',
       icon: {
         base: '#aaa',
@@ -60,7 +61,7 @@ const theme = {
     borderRadius: {
       max: '50px',
       big: '12px',
-      small: '6px',
+      small: '6px'
     },
     line: '3px'
   },
