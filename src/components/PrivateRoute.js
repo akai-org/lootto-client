@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Route, Redirect } from "react-router-dom";
-import Loading from "../components/Loading";
+import React, { useState } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [location, setLocation] = useState({});

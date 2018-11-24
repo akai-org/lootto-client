@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useWallet from '../hooks/useWallet';
 import Navbar from '../components/Navbar';
+import MainMap from '../components/MainMap';
 
-export default function GameScreen() {
+const GameScreen = props => {
   const [wallet, setWallet] = useWallet();
 
   if (!wallet.loaded) {
@@ -13,11 +14,16 @@ export default function GameScreen() {
   }
 
   return (
-    <div>
-      <Navbar stars={wallet.stars} />
-      <Link to="/">Wróć na stronę główną!</Link>
-      <Link to="/">Osiągnięcia!</Link>
-      <Link to="/">Ustawienia!</Link>
-    </div>
+    <>
+      <div>
+        <Navbar stars={12} />
+        <Link to="/">Wróć na stronę główną!</Link>
+        <Link to="/">Osiągnięcia!</Link>
+        <Link to="/">Ustawienia!</Link>
+      </div>
+      <MainMap location={props.location} />
+    </>
   );
-}
+};
+
+export default GameScreen;
