@@ -18,7 +18,7 @@ export default function LoginScreen() {
       <Layout distributed spanned narrow>
         <Logo welcome title="Lootto" subtitle="get rekt." />
         <FacebookLogin
-          appId="1088597931155576"
+          appId="352388892232894"
           autoLoad={true}
           fields="name,email,picture"
           isMobile={false}
