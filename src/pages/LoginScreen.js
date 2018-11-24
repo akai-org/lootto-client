@@ -8,8 +8,6 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 
 import useCookie from '../hooks/useCookie';
 
-// const cookies = new Cookies();
-
 export default function LoginScreen(props) {
   const { history } = props;
   const [, setToken] = useCookie("token", "");
@@ -19,7 +17,7 @@ export default function LoginScreen(props) {
     <Fragment>
       <Particles />
       <Layout distributed spanned narrow>
-        <Logo welcome title="Lootto" subtitle="get good. or get rekt." />
+        <Logo welcome title="Lootto" subtitle="Rozpocznij z nami kosmiczną eksplorację Lootto." />
         <FacebookLogin
           appId="352388892232894"
           autoLoad={true}

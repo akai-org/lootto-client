@@ -23,6 +23,13 @@ const Button = styled('button')`
       background: ${theme.color.accent.primary.light};
       color: ${theme.color.accent.primary.base};
     `}
+
+  ${({ small, theme }) =>
+    small &&
+    css`
+      font-size: ${theme.font.size.label.tertiary};
+      padding: 0.5rem 0.2rem;
+    `}
 `;
 
 export default Button;

@@ -6,7 +6,7 @@ const LogoWrapper = styled('div')`
   ${({ welcome }) =>
     welcome &&
     css`
-      margin: 50% 0 5%;
+      margin: 80% 0 5%;
     `}
 
   img {
