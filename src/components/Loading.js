@@ -2,10 +2,13 @@ import React from "react";
 import styled from "react-emotion";
 
 import Layout from '../components/Layout';
+import Title from '../components/Title';
 
 import astronaut from "../assets/astronaut.png";
 
-const FloatingDiv = styled('div')`
+const AstronautWrapper = styled('div')`
+  position: relative;
+  left: -20px;
   max-width: 100%;
   max-height: 100%;
   animation: floating 6s infinite ease-in-out;
@@ -18,10 +21,12 @@ const FloatingDiv = styled('div')`
 `;
 
 const Loading = () => (
-  <Layout distributed spanned narrow>
-    <FloatingDiv>
+  <Layout distributed>
+    <AstronautWrapper>
       <img src={astronaut} alt="" />
-    </FloatingDiv>
+    </AstronautWrapper>
+
+    <Title medium>Najświeższe dane już do Ciebie lecą!</Title>
   </Layout>
 );
 
