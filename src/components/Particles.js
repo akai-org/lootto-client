@@ -1,7 +1,7 @@
-import React from "react";
-import Particles from "react-particles-js";
+import React from 'react';
+import Particles from 'react-particles-js';
 
-export default () => (
+export default asd => (
   <Particles
     params={{
       particles: {
@@ -17,11 +17,11 @@ export default () => (
           opacity: 0.02
         },
         move: {
-          direction: "right",
+          direction: 'right',
           speed: 0.06
         },
         size: {
-          value: 1.5
+          value: 3.5
         },
         opacity: {
           anim: {
@@ -35,7 +35,7 @@ export default () => (
         events: {
           onclick: {
             enable: true,
-            mode: "push"
+            mode: 'push'
           }
         },
         modes: {
@@ -47,10 +47,10 @@ export default () => (
       retina_detect: true
     }}
     style={{
-      width: "100%",
+      width: '100%',
       backgroundColor: `#0f2432`,
-      position: "absolute",
-      zIndex: "-1"
+      position: 'absolute',
+      zIndex: '-1'
     }}
   />
 );

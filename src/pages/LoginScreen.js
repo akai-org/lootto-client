@@ -15,8 +15,9 @@ export default function LoginScreen() {
 
   return (
     <Fragment>
+      <Particles />
       <Layout distributed spanned narrow>
-        <Logo welcome title="Lootto" subtitle="get rekt." />
+        <Logo welcome title="Lootto" subtitle="get good. or get rekt." />
         <FacebookLogin
           appId="352388892232894"
           autoLoad={true}
