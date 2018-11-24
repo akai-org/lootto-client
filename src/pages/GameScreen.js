@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useWallet from '../hooks/useWallet';
-import Navbar from '../components/Navbar';
-import MainMap from '../components/MainMap';
+import React from "react";
+import { Link } from "react-router-dom";
+import useWallet from "../hooks/useWallet";
+import Navbar from "../components/Navbar";
+import MainMap from "../components/MainMap";
 
 const GameScreen = props => {
   const [wallet, setWallet] = useWallet();
@@ -17,9 +17,6 @@ const GameScreen = props => {
     <>
       <div>
         <Navbar stars={12} />
-        <Link to="/">Wróć na stronę główną!</Link>
-        <Link to="/">Osiągnięcia!</Link>
-        <Link to="/">Ustawienia!</Link>
       </div>
       <MainMap location={props.location} />
     </>
