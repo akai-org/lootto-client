@@ -28,6 +28,13 @@ const Button = styled('button')`
       background: none;
       border: ${theme.size.line} solid ${theme.color.accent.primary.light};
     `}
+  
+  ${({ tertiary, theme }) =>
+    tertiary &&
+    css`
+      background: transparent;
+      border: 2px solid ${theme.color.accent.primary.light};
+    `}
 `;
 
 Button.propTypes = {

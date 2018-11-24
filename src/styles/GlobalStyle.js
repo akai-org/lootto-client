@@ -1,42 +1,41 @@
-import styledNormalize from 'emotion-normalize';
-import { injectGlobal } from 'emotion';
+import theme from "./theme";
 
 const GlobalStyle = `
-  @import url('https://fonts.googleapis.com/css?family=Quicksand:500,700&subset=latin-ext');
-
-  :root {
-    font-size: ${({ theme }) => theme.font.size.root};
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+  
+  html {
+    margin: 0;
   }
 
   body {
-    background: ${({ theme }) => theme.color.accent.primary.base};
-    color: ${({ theme }) => theme.color.text.base};
-    font-family: ${({ theme }) => theme.font.family};
-    font-weight: ${({ theme }) => theme.font.weight.base};
+    background: ${theme.color.accent.primary.base};
+    color: ${theme.color.text.base};
+    font-family: ${theme.font.family};
+    font-weight: ${theme.font.weight.base};
     margin: 0;
     overflow-x: hidden;  
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: ${({ theme }) => theme.color.text.primary};
-    line-height: ${({ theme }) => theme.font.lineHeight.heading}
+    color: ${theme.color.text.primary};
+    line-height: ${theme.font.lineHeight.caption}
   }
 
   h1 {
-    font-size: ${({ theme }) => theme.font.size.heading.primary};
+    font-size: ${theme.font.size.heading.primary};
   }
 
   h2 {
-    font-size: ${({ theme }) => theme.font.size.heading.secondary};
+    font-size: ${theme.font.size.heading.secondary};
   }
 
   h3 {
-    font-size: ${({ theme }) => theme.font.size.heading.tertiary};
+    font-size: ${theme.font.size.heading.tertiary};
   }
 
   p {
-    line-height: ${({ theme }) => theme.font.lineHeight.text}; 
-    color: ${({ theme }) => theme.color.text.base};
+    line-height: ${theme.font.lineHeight.text}; 
+    color: ${theme.color.text.primary};
     margin: 1em 0 1.5em;
   }
 
@@ -48,7 +47,6 @@ const GlobalStyle = `
   }
 
   img {
-    height: auto;
     max-width: 100%;
   }
 `;

@@ -18,9 +18,7 @@ const theme = {
     },
     text: {
       primary: 'rgb(255, 255, 255)',
-      secondary: '#aaa',
-      tertiary: '#fff',
-      base: '#666'
+      base: '#fff',
     },
     elements: {
       line: '#ddd',

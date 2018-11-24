@@ -2,6 +2,8 @@ import React from "react";
 import styled from "react-emotion";
 import { Link } from "react-router-dom";
 import cross from "../assets/cross.svg";
+import Button from "./Button";
+import IconButton from "./IconButton";
 
 const MenuBox = styled('nav')`
   background: ${props => props.theme.color.accent.primary.base};
@@ -37,17 +39,31 @@ const Overlay = styled('div')`
 `;
 
 const MenuUl = styled('ul')`
-  margin: 100px 0 0;
+  margin: 15vh 0 0;
   padding: 0;
   list-style-type: none;
 `;
 
 const MenuLink = styled(Link)`
   display: block;
-  margin: 0;
-  padding: 30px;
+  line-height: ${({ theme }) => theme.font.lineHeight.caption};
+  color: ${({ theme }) => theme.color.text.tertiary};
+  font-size: ${({ theme }) => theme.font.size.label.tertiary};
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+
+  transition: .3s;
+
+  &:hover {
+    background: ${props => props.theme.color.accent.primary.light};
+    color: ${props => props.theme.color.accent.primary.base};
+  }
+`;
+
+const Wrapper = styled('div')`
+  display: block;
+  margin: 0;
+  padding: 20px;
 `;
 
 const options = [
@@ -60,12 +76,15 @@ const options = [
 const Menu = ({ isVisible, onClose }) => (
   <>
     <MenuBox isVisible={isVisible}>
-      <a style={{marginTop: 40, marginLeft: 20}} onClick={onClose}>
-        <img src={cross} width="25" height="25" alt="Ukryj menu" />
-      </a>
+      <Wrapper>
+        <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
+      </Wrapper>
       <MenuUl>
-        {options.map(({ label, path }) => <li key={path}><MenuLink to={path}>{label}</MenuLink></li>)}
+        {options.map(({ label, path }) => <li key={path}><MenuLink to={path}><Wrapper>{label}</Wrapper></MenuLink></li>)}
       </MenuUl>
+      <Wrapper>
+        <Button tertiary>Wyloguj</Button>
+      </Wrapper>
     </MenuBox>
     <Overlay isVisible={isVisible} onClick={onClose}>
     </Overlay>
