@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "react-emotion";
 
 import Menu from "./Menu";
+import Layout from "./Layout";
 import IconButton from "./IconButton";
 import { Link } from "react-router-dom";
 
@@ -12,7 +13,7 @@ import plus from "../assets/plus.svg";
 const Header = styled('header')`
   background: ${props => props.theme.color.accent.primary.base};
   color: #fff;
-  padding: 20px;
+  padding: 2;
   display: flex;
   justify-content: space-between;
 `;
@@ -42,7 +43,7 @@ function Navbar({ stars }) {
   const hideMenu = () => setMenuVisibility(false);
 
   return (
-    <>
+    <Layout>
       <Header>
         <MenuIcon onClick={showMenu}></MenuIcon>
         <div>
@@ -51,7 +52,7 @@ function Navbar({ stars }) {
         </div>
       </Header>
       <Menu isVisible={menuVisibility} onClose={hideMenu} />
-    </>
+    </Layout>
   );
 }
 
