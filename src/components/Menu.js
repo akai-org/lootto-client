@@ -3,6 +3,7 @@ import styled from "react-emotion";
 import { Link } from "react-router-dom";
 import cross from "../assets/cross.svg";
 import Button from "./Button";
+import IconButton from "./IconButton";
 
 const MenuBox = styled('nav')`
   background: ${props => props.theme.color.accent.primary.base};
@@ -62,7 +63,7 @@ const MenuLink = styled(Link)`
 const Wrapper = styled('div')`
   display: block;
   margin: 0;
-  padding: 24px;
+  padding: 20px;
 `;
 
 const options = [
@@ -76,9 +77,7 @@ const Menu = ({ isVisible, onClose }) => (
   <>
     <MenuBox isVisible={isVisible}>
       <Wrapper>
-        <a onClick={onClose}>
-          <img src={cross} width="25" height="25" alt="Ukryj menu" />
-        </a>
+        <IconButton src={cross} width="25" height="25" alt="Ukryj menu" onClick={onClose} />
       </Wrapper>
       <MenuUl>
         {options.map(({ label, path }) => <li key={path}><MenuLink to={path}><Wrapper>{label}</Wrapper></MenuLink></li>)}
