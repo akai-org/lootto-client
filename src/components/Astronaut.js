@@ -27,7 +27,7 @@ const AstronautWrapper = styled("div")`
       position: absolute;
       width: 80%;
       top: 5%;
-      overflow-x: hidden;
+      overflow: hidden;
 
       img {
         animation: floatFromSide 4s cubic-bezier(0.42, 0, 0, 1.01) forwards;
