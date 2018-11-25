@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import styled from 'react-emotion';
 
 import Menu from './Menu';
@@ -39,7 +39,7 @@ function Navbar({ stars }) {
   const hideMenu = () => setMenuVisibility(false);
 
   return (
-    <Layout>
+    <Fragment>
       <Header>
         <MenuIcon onClick={showMenu} />
         <div className="menu__stars">
@@ -50,7 +50,7 @@ function Navbar({ stars }) {
         </div>
       </Header>
       <Menu isVisible={menuVisibility} onClose={hideMenu} />
-    </Layout>
+    </Fragment>
   );
 }
 

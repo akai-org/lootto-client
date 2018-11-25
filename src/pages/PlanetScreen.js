@@ -7,6 +7,7 @@ import ColumnList from '../components/ColumnList';
 import Box from '../components/Box';
 import Button from '../components/Button';
 import StarCount from '../components/StarCount';
+import Layout from '../components/Layout';
 
 export default function GameScreen() {
   const [wallet, setWallet] = useWallet();
@@ -32,23 +33,28 @@ export default function GameScreen() {
 
   return (
     <div>
-      <Navbar stars={wallet.stars} />
-      <ColumnList>
-        {chests.loaded &&
-          chests.list.map(chest => (
-            <Box wide>
-              <img src="/images/Chest.png" />
-              <div className="chest__text">
-                {chest.name && <strong>{chest.name}</strong>}
-                {/* {chest.price && <span>{chest.price}</span>} */}
-                <StarCount>5</StarCount>
-              </div>
-              <Button primary small narrow>
-                otwórz
-              </Button>
-            </Box>
-          ))}
-      </ColumnList>
+      <Layout distributed spanned narrow>
+        <Navbar stars={wallet.stars} />
+        <ColumnList>
+          {chests.loaded &&
+            chests.list.map(chest => (
+              <Box wide>
+                <img src="/images/Chest.png" />
+                <div className="chest__text">
+                  {chest.name && <strong>{chest.name}</strong>}
+                  {/* {chest.price && <span>{chest.price}</span>} */}
+                  <StarCount>5</StarCount>
+                </div>
+                <Button primary small narrow>
+                  otwórz
+                </Button>
+              </Box>
+            ))}
+        </ColumnList>
+        <Button as="input" type="submit" secondary>
+          Zaloguj się przez facebook
+        </Button>
+      </Layout>
     </div>
   );
 }
