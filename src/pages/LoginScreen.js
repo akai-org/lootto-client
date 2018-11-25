@@ -16,9 +16,11 @@ export default function LoginScreen(props) {
   const [token, setToken] = useCookie("token", "");
   const [tutorialCompleted] = useCookie("tutorialCompleted", false);
 
-  const context = useContext(UserContext);
+  const user = useContext(UserContext);
 
-  console.log("context", context);
+  if (user) {
+    return <Redirect to='/game' />
+  }
 
   return (
     <Fragment>
