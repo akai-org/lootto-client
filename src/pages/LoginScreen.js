@@ -11,6 +11,7 @@ import useCookie from "../hooks/useCookie";
 import useUser from "../hooks/useUser";
 
 import UserContext from "../contexts/UserContext";
+import { authorizedRequest } from "../utils/request";
 
 export default function LoginScreen(props) {
   const { history, onLogin } = props;
@@ -41,20 +42,10 @@ export default function LoginScreen(props) {
           callback={response => {
             if (response.accessToken) {
               setToken(response.accessToken);
-
-              fetch(`${process.env.REACT_APP_API}/auth`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                  access_token: response.accessToken
-                })
-              })
-                .then(res => res.json())
-                .then(json => {
-                  onLogin(json);
-                  console.log(json);
+              authorizedRequest('auth', { method: 'POST', body: {
+                access_token: response.accessToken
+              }}).then(user => {
+                  onLogin(user);
                   if (tutorialCompleted) {
                     history.push("/game");
                   } else {
