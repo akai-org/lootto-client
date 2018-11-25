@@ -17,6 +17,7 @@ import UnboxingScreen from './pages/UnboxingScreen';
 import PlanetScreen from './pages/PlanetScreen';
 import AccountScreen from "./pages/AccountScreen";
 import SocialScreen from "./pages/SocialScreen";
+import RewardScreen from "./pages/RewardScreen";
 
 injectGlobal(GlobalStyle);
 
@@ -42,6 +43,7 @@ const App = function() {
           <PrivateRoute path="/game" component={GameScreen} />
           <PrivateRoute path="/planet" component={PlanetScreen} />
           <PrivateRoute path="/unboxing" component={UnboxingScreen} />
+          <PrivateRoute path="/reward" component={RewardScreen} />
         </Switch>
       </Router>
     </Fragment>

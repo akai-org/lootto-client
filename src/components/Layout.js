@@ -39,6 +39,18 @@ const Layout = styled('div')`
     css`
       background: ${theme.color.background.light};
     `}
+
+  ${({ inner, theme }) =>
+    inner &&
+    css`
+      padding-top: 0;
+    `}
+
+  ${({ inner, spanned, theme }) =>
+    inner && spanned &&
+    css`
+      min-height: ${window.innerHeight - 78}px;
+    `}
 `;
 
 Layout.propTypes = {
