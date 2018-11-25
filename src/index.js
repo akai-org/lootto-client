@@ -45,7 +45,12 @@ const App = function() {
     if (moneyTaken > user.moneyBalance) return;
     setUser({...user, starsBalance: user.starsBalance + starsGiven, moneyBalance: user.moneyBalance - moneyTaken})
   };
-  const renderExchangePage = (props) => <ExchangeScreen onExchange={onExchange} {...props}></ExchangeScreen>
+  const renderExchangePage = (props) => <ExchangeScreen onExchange={onExchange} {...props}></ExchangeScreen>;
+
+  const onBalanceChange = (moneyBalance) => {
+    setUser({...user, moneyBalance});
+  };
+  const renderAccountPage = (props) => <AccountScreen onBalanceChange={onBalanceChange} {...props}></AccountScreen>
 
   return (
     <ThemeProvider theme={theme}>
@@ -55,7 +60,7 @@ const App = function() {
             <Switch>
               <Route exact path="/" render={renderMainPage} />
               <PrivateRoute path="/tutorial" component={TutorialScreen} />
-              <PrivateRoute path="/account" component={AccountScreen} />
+              <PrivateRoute path="/account" component={renderAccountPage} />
               <PrivateRoute path="/achievements" component={AchievementsScreen} />
               <PrivateRoute path="/exchange" component={renderExchangePage} />
               <PrivateRoute path="/social" component={SocialScreen} />
