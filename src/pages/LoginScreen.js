@@ -9,6 +9,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { Redirect } from 'react-router-dom';
 import useCookie from '../hooks/useCookie';
 
+import UserContext from "../contexts/UserContext";
+
 export default function LoginScreen(props, context) {
   const { history, onLogin } = props;
   const [token, setToken] = useCookie('token', '');
@@ -76,3 +78,5 @@ LoginScreen.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired
 };
+
+LoginScreen.contextType = UserContext;
