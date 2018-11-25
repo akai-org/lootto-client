@@ -21,8 +21,8 @@ injectGlobal(GlobalStyle);
 
 const App = function() {
   const [user, setUser] = useState(null);
-  const renderLoginScreen = (props) => (
-    <LoginScreen onLogin={setUser} {...props} />
+  const renderMainPage = (props) => (
+    user ? <Redirect to="/game" /> : <LoginScreen onLogin={setUser} {...props} />
   );
 
   console.log('current user is', user);
@@ -32,7 +32,7 @@ const App = function() {
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" render={renderLoginScreen} />
+          <Route exact path="/" render={renderMainPage} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/account" component={AccountScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
@@ -42,7 +42,6 @@ const App = function() {
           <PrivateRoute path="/unboxing" component={UnboxingScreen} />
         </Switch>
       </Router>
-      {user && <Redirect to="/game" />}
     </Fragment>
   </ThemeProvider>
   )
