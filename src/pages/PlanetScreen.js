@@ -50,8 +50,8 @@ const GameScreen = function(props) {
 
   return (
     <div>
+      <Navbar stars={user.starsBalance} />
       <Layout distributed fitted narrow>
-        <Navbar stars={user.starsBalance} />
         <ColumnList>
           {chests.loaded &&
             chests.list.map(chest => (
