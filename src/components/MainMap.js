@@ -86,16 +86,17 @@ const MapScreen = props => {
           {!!markers.length
             ? markers.map(marker =>
                 marker.show ? (
+                  <Link to="/planet">
                   <Marker
                     key={marker.name}
                     position={marker.coordinates}
                     icon={iconTypeToIcon(marker.type)}
-                    onClick={() => (window.location.pathname = "/planet")}
                   >
                     <Popup>
                       You are too far, try to get a little bit closer.
                     </Popup>
                   </Marker>
+                  </Link>
                 ) : null
               )
             : null}
