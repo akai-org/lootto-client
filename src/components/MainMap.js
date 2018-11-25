@@ -6,6 +6,11 @@ import { icon } from 'leaflet';
 import { withRouter } from 'react-router';
 import { authorizedRequest } from '../utils/request';
 
+const userMarker = icon({
+  iconUrl: require('../assets/star.svg'),
+  iconSize: [50, 50]
+});
+
 const markerPlanet1 = icon({
   iconUrl: require('../assets/planet1.png'),
   iconSize: [50.38, 31.812]
@@ -102,6 +107,7 @@ const MapScreen = props => {
                 ) : null
               )
             : null}
+          <Marker icon={userMarker} position={position} />
         </Map>
       </MapWrapper>
     </div>

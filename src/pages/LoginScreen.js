@@ -20,9 +20,9 @@ export default function LoginScreen(props) {
 
   const user = useUser();
 
-  if (user) {
-    return <Redirect to="/game" />;
-  }
+  // if (user) {
+  //   return <Redirect to="/game" />;
+  // }
 
   return (
     <Fragment>

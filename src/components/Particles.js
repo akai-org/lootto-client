@@ -50,7 +50,7 @@ export default () => (
       width: '100%',
       backgroundColor: `#0f243B`,
       position: 'absolute',
-      zIndex: '-1'
+      zIndex: '-2'
     }}
   />
 );

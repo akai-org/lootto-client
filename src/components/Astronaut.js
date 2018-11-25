@@ -1,9 +1,14 @@
-import React from "react";
-import styled, { css } from "react-emotion";
-import astronaut from "../assets/astronaut.png";
+import React from 'react';
+import styled, { css } from 'react-emotion';
+import astronaut from '../assets/astronaut.png';
 
-const AstronautWrapper = styled("div")`
+const AstronautWrapper = styled('div')`
+  @media screen and (min-width: 640px) {
+    max-width: 500px;
+  }
+
   position: relative;
+  z-index: -1;
   max-width: 100%;
   max-height: 100%;
   animation: floating 6s infinite ease-in-out;
