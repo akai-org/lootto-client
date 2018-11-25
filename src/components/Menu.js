@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "react-emotion";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import cross from "../assets/cross.svg";
 import Button from "./Button";
 import IconButton from "./IconButton";
@@ -80,13 +80,17 @@ const options = [
   { label: "Społeczność", path: "/social" },
 ];
 
-const logout = () => {
-  const [_, setToken] = useCookie("token", "");
-  setToken("");
-};
+const Menu = ({ isVisible, onClose }) => {
+  const [token, setToken] = useCookie("token", "");
 
-const Menu = ({ isVisible, onClose }) => (
-  <>
+  const logout = () => setToken("");
+
+  if (!token) {
+    console.log('sorry to see you go');
+    return <Redirect to="/"></Redirect>;
+  }
+
+  return (<>
     <MenuBox isVisible={isVisible}>
       <Layout>
         <Wrapper>
@@ -115,7 +119,7 @@ const Menu = ({ isVisible, onClose }) => (
       </Layout>
     </MenuBox>
     <Overlay isVisible={isVisible} onClick={onClose} />
-  </>
-);
+  </>);
+};
 
 export default Menu;
