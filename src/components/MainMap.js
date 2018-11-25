@@ -6,10 +6,8 @@ import { icon } from 'leaflet';
 import { withRouter } from 'react-router';
 import { authorizedRequest } from '../utils/request';
 
-const userMarker = icon({
-  iconUrl: require('../assets/star.svg'),
-  iconSize: [50, 50]
-});
+// picture.data.url
+// ":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=2228342300721419&height=50&width=50&ext=1545732803&hash=AeRoknu4fNwrACXM","width":50}},"id":"2228342300721419"}
 
 const markerPlanet1 = icon({
   iconUrl: require('../assets/planet1.png'),
@@ -46,6 +44,11 @@ const MapScreen = props => {
     props.userLocation.coords.latitude,
     props.userLocation.coords.longitude
   ]);
+
+  const userMarker = icon({
+    iconUrl: props.userPicture.data.url,
+    iconSize: [50, 50]
+  });
 
   const [zoom, setZoom] = useState(16);
 

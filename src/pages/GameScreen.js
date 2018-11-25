@@ -16,7 +16,11 @@ const GameScreen = props => {
   return (
     <>
       <Navbar stars={user.starsBalance} />
-      {location.coords ? <MainMap userLocation={location} /> : <Loading />}
+      {location.coords ? (
+        <MainMap userLocation={location} userPicture={user.picture} />
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
