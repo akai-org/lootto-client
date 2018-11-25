@@ -17,14 +17,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         setLocation(location);
       },
       err => {
-        setLocation({ error: `ERROR(${err.code}): ${err.message}` });
+        // setLocation({ error: `ERROR(${err.code}): ${err.message}` });
       },
       options
     );
   };
 
   if (location.error) {
-    return <Redirect to="/" />;
+    console.log('location error', location);
+    //return <Redirect to="/" />;
   }
 
   if (!location.coords) {

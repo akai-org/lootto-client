@@ -28,8 +28,6 @@ const App = function() {
     <LoginScreen onLogin={setUser} {...props} />
   );
 
-  console.log('current user is', user);
-
   return (
     <ThemeProvider theme={theme}>
       <UserContext.Provider value={user}>

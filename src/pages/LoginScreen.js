@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Layout from "../components/Layout";
 import PropTypes from "prop-types";
 import Logo from "../components/Logo";
@@ -8,15 +8,20 @@ import Astronaut from "../components/Astronaut";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { Redirect } from "react-router-dom";
 import useCookie from "../hooks/useCookie";
+import useUser from "../hooks/useUser";
 
 import UserContext from "../contexts/UserContext";
 
-export default function LoginScreen(props, context) {
+export default function LoginScreen(props) {
   const { history, onLogin } = props;
   const [token, setToken] = useCookie("token", "");
   const [tutorialCompleted] = useCookie("tutorialCompleted", false);
 
-  console.log("context", context);
+  const user = useUser();
+
+  if (user) {
+    return <Redirect to='/game' />
+  }
 
   return (
     <Fragment>
@@ -48,6 +53,7 @@ export default function LoginScreen(props, context) {
               })
                 .then(res => res.json())
                 .then(json => {
+                  onLogin(json);
                   console.log(json);
                   if (tutorialCompleted) {
                     history.push("/game");
