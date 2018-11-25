@@ -1,5 +1,5 @@
 import React from 'react';
-import useWallet from '../hooks/useWallet';
+import useUser from '../hooks/useUser';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Layout from '../components/Layout';
@@ -35,19 +35,13 @@ const boxTypeToAdditional = () => {
 };
 
 export default function RewardScreen() {
-  const [wallet, setWallet] = useWallet();
+  const user = useUser();
 
   const chestType = window.location.search.split('=')[1];
 
-  // if (!wallet.loaded) {
-  //   fetch(`${process.env.REACT_APP_API}/user`)
-  //     .then(res => res.json())
-  //     .then(data => setWallet({ ...data.wallet, loaded: true }));
-  // }
-
   return (
     <div>
-      <Navbar stars={wallet.stars} />
+      <Navbar stars={user.starsBalance} />
       <Layout distributed fitted narrow inner>
         <div>
           <Title medium>Gratulacje!</Title>
