@@ -1,6 +1,4 @@
 import styled, { css } from 'react-emotion';
-import PropTypes from 'prop-types';
-import React from 'react';
 
 const Box = styled('div')`
   border-radius: 20px;

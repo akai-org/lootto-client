@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import ColumnList from '../components/ColumnList';
 import Box from '../components/Box';
 import Button from '../components/Button';
+import StarCount from '../components/StarCount';
 
 export default function GameScreen() {
   const [wallet, setWallet] = useWallet();
@@ -40,7 +41,8 @@ export default function GameScreen() {
               <div className="chest__text">
                 {chest.name && <strong>{chest.name}</strong>}
                 {/* {chest.price && <span>{chest.price}</span>} */}
-                {<span>{chest.price}</span>}
+                <StarCount />
+                {<span>{5}</span>}
               </div>
               <Button primary small narrow>
                 otwórz
