@@ -6,7 +6,7 @@ import BackButton from "../components/BackButton";
 import Caption from "../components/Caption";
 import Label from "../components/Label";
 import useCookie from "../hooks/useCookie";
-import useWallet from "../hooks/useWallet";
+import useUser from "../hooks/useUser";
 import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
 import Box from "../components/Box";
@@ -45,9 +45,16 @@ const buyingOptions = [
   }
 ];
 
-export default function ExchangeScreen() {
+export default function ExchangeScreen({ onExchange }) {
   const [token, setToken] = useCookie("token", "");
-  const [wallet, setWallet] = useWallet();
+  const user = useUser();
+
+  const buy = (stars, currency) => {
+    if (user.moneyBalance < currency) {
+      return;
+    }
+    onExchange(stars, currency);
+  };
 
   // if (!wallet.loaded) {
   //   fetch(`${process.env.REACT_APP_API}/user`)
@@ -62,16 +69,16 @@ export default function ExchangeScreen() {
         <Title medium>Kantor</Title>
         <SaldoWrapper>
           <Label>Saldo</Label>
-          <Caption>234 PLN</Caption>
+          <Caption>{user.moneyBalance} PLN</Caption>
         </SaldoWrapper>
         <ColumnContainer>
           {buyingOptions.map(({ stars, currency, imgSrc }) => (
-            <Column>
+            <Column disabled={user.moneyBalance < currency}>
               <Box center>
                 <Image center src={imgSrc} />
                 <StarCount>{stars}</StarCount>
               </Box>
-              <Button primary small onClick={() => {}}>
+              <Button primary small onClick={() => buy(stars, currency)}>
                 Kup
               </Button>
               <Caption small center>

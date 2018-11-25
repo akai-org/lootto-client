@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 
 export const ColumnContainer = styled('div')`
   display: flex;
@@ -8,4 +8,8 @@ export const ColumnContainer = styled('div')`
 export const Column = styled('div')`
   flex: 1;
   padding: 0.5rem;
+
+  ${({ disabled }) => disabled && css`
+    opacity: 0.3;
+  `}
 `;
