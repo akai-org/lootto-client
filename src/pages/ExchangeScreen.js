@@ -12,6 +12,8 @@ import Button from "../components/Button";
 import Box from "../components/Box";
 import StarCount from "../components/StarCount";
 import Image from "../components/Image";
+import { authorizedRequest } from "../utils/request";
+
 import small from "../assets/starBags/bag.png";
 import medium from "../assets/starBags/bag-bigger.png";
 import large from "../assets/starBags/bag-biggest.png";
@@ -49,11 +51,12 @@ export default function ExchangeScreen({ onExchange }) {
   const [token, setToken] = useCookie("token", "");
   const user = useUser();
 
-  const buy = (stars, currency) => {
-    if (user.moneyBalance < currency) {
+  const buy = (stars, money) => {
+    if (user.moneyBalance < money) {
       return;
     }
-    onExchange(stars, currency);
+    authorizedRequest('user/buy', {method: 'POST', body: { stars, money }})
+      .then(() => onExchange(stars, money));
   };
 
   // if (!wallet.loaded) {
