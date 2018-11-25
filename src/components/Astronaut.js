@@ -23,13 +23,14 @@ const AstronautWrapper = styled('div')`
       position: absolute;
       width: 80%;
       top: 5%;
-      animation: 
-        floating 6s infinite ease-in-out,
-        floatFromSide 4s cubic-bezier(0.42, 0, 0, 1.01) forwards;
+
+      img {
+        animation: floatFromSide 4s cubic-bezier(0.42, 0, 0, 1.01) forwards;
+      }
 
       @keyframes floatFromSide {
-        0% { right: -100%; }
-        100% { right: -10%; }
+        0% { transform: translate(120%) }
+        100% { transform: translate(40%) }
       }
     `}
 `;
