@@ -17,7 +17,7 @@ const GameScreen = function(props) {
     fetch(`${process.env.REACT_APP_API}/planet/${planetId}`)
       .then(res => res.json())
       .then(list => {
-        setChests({ list: list.chests, loaded: true });
+        setChests({ list, loaded: true });
       });
   }
 
