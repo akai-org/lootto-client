@@ -1,5 +1,5 @@
 import React from 'react';
-import useWallet from '../hooks/useWallet';
+import useUser from '../hooks/useWallet';
 import useChests from '../hooks/useChests';
 import Navbar from '../components/Navbar';
 import ColumnList from '../components/ColumnList';
@@ -10,7 +10,7 @@ import Layout from '../components/Layout';
 import { withRouter } from 'react-router';
 
 const GameScreen = function(props) {
-  const [wallet, setWallet] = useWallet();
+  const user = useUser();
   const [chests, setChests] = useChests();
 
   const planetId = window.location.search.split('=')[1];
@@ -55,7 +55,7 @@ const GameScreen = function(props) {
   return (
     <div>
       <Layout distributed fitted narrow>
-        <Navbar stars={wallet.stars} />
+        <Navbar stars={user.starsBalance} />
         <ColumnList>
           {chests.loaded &&
             chests.list.map(chest => (
