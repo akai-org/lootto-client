@@ -22,7 +22,7 @@ const iconTypeToIcon = type => {
 const MapWrapper = styled('div')`
   .leaflet-container {
     width: 100vw;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 114px);
   }
 `;
 
@@ -31,6 +31,7 @@ const MapScreen = props => {
     props.location.coords.latitude,
     props.location.coords.longitude
   ]);
+
   const [zoom, setZoom] = useState(16);
 
   // markers data
@@ -44,8 +45,8 @@ const MapScreen = props => {
     fetch(`${process.env.REACT_APP_API}/planet`)
       .then(res => res.json())
       .then(data =>
-        data.map(({ planetId, name, type, longitude, latitude }) => ({
-          planetId,
+        data.map(({ _id, name, type, longitude, latitude }) => ({
+          planetId: _id,
           name,
           type,
           tags: ['default'],

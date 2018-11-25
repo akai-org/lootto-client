@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
 import Particles from '../components/Particles.js';
+import Astronaut from '../components/Astronaut';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { Redirect } from 'react-router-dom';
 import useCookie from '../hooks/useCookie';
@@ -17,6 +18,7 @@ export default function LoginScreen(props) {
 
   return (
     <Fragment>
+      <Astronaut floatFromSide />
       <Particles />
       <Layout distributed spanned narrow>
         <Logo
@@ -35,14 +37,17 @@ export default function LoginScreen(props) {
 
               setToken(response.accessToken);
 
-              fetch(`${process.env.REACT_ENV_API}/register`, {
-                method: 'POST',
+              fetch(`${process.env.REACT_APP_API}/auth`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
-                  t: response.accessToken
+                  access_token: response.accessToken
                 })
-              })
-                .then(res => res.json())
+              }).then(res => res.json())
                 .then(json => {
+                  console.log(json);
                   if (tutorialCompleted) {
                     history.push('/game');
                   } else {

@@ -9,6 +9,12 @@ import useCookie from "../hooks/useCookie";
 import useWallet from "../hooks/useWallet";
 import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
+import Box from "../components/Box";
+import StarCount from "../components/StarCount";
+import Image from "../components/Image";
+import small from '../assets/starBags/bag.png'
+import medium from "../assets/starBags/bag-bigger.png";
+import large from "../assets/starBags/bag-biggest.png";
 
 const SaldoWrapper = styled('div')`
   display: flex;
@@ -24,14 +30,17 @@ const buyingOptions = [
   {
     stars: 5,
     currency: 10,
+    imgSrc: small,
   },
   {
     stars: 15,
     currency: 30,
+    imgSrc: medium,
   },
   {
     stars: 30,
     currency: 60,
+    imgSrc: large,
   },
 ];
 
@@ -56,12 +65,16 @@ export default function ExchangeScreen() {
         </SaldoWrapper>
         <ColumnContainer>
           {
-            buyingOptions.map(({ stars, currency }) => (
+            buyingOptions.map(({ stars, currency, imgSrc }) => (
               <Column>
-                
+                <Box center>
+                  <Image center src={imgSrc}></Image>
+                  <StarCount>{stars}</StarCount>
+                </Box>
                 <Button 
                   primary
                   small
+                  onClick={() => { }}
                 >
                   Kup
                 </Button>
