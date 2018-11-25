@@ -24,6 +24,14 @@ const MapWrapper = styled("div")`
     width: 100vw;
     height: calc(100vh - 78px);
   }
+  .leaflet-title-pane {
+    filter: grayscale(100%) contrast(0.6) sepia(100%) contrast(0.8) invert(100%)
+      brightness(1.8) hue-rotate(-30deg) contrast(1.7) brightness(1.1);
+  }
+
+  .leaflet-marker-pane {
+    filter: saturate(70%);
+  }
 `;
 
 const MapScreen = props => {
@@ -91,7 +99,6 @@ const MapScreen = props => {
                 ) : null
               )
             : null}
-          <Rectangle bounds={[[-150, -150], [150, 150]]} color={"#4ee1ec"} />
         </Map>
       </MapWrapper>
     </div>
