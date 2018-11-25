@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import useWallet from "../hooks/useWallet";
-import useChests from "../hooks/useChests";
-import Navbar from "../components/Navbar";
-import ColumnList from "../components/ColumnList";
-import Box from "../components/Box";
-import Button from "../components/Button";
-import StarCount from "../components/StarCount";
-import Layout from "../components/Layout";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useWallet from '../hooks/useWallet';
+import useChests from '../hooks/useChests';
+import Navbar from '../components/Navbar';
+import ColumnList from '../components/ColumnList';
+import Box from '../components/Box';
+import Button from '../components/Button';
+import StarCount from '../components/StarCount';
+import Layout from '../components/Layout';
 
 export default function GameScreen() {
   const [wallet, setWallet] = useWallet();
@@ -33,7 +33,7 @@ export default function GameScreen() {
 
   return (
     <div>
-      <Layout distributed spanned narrow>
+      <Layout distributed fitted narrow>
         <Navbar stars={wallet.stars} />
         <ColumnList>
           {chests.loaded &&
@@ -51,7 +51,7 @@ export default function GameScreen() {
                   narrow
                   onClick={() =>
                     (window.location.href =
-                      window.location.origin + "/unboxing")
+                      window.location.origin + '/unboxing')
                   }
                 >
                   otwórz
@@ -59,9 +59,9 @@ export default function GameScreen() {
               </Box>
             ))}
         </ColumnList>
-        <Button as="input" type="submit" secondary>
-          Zaloguj się przez facebook
-        </Button>
+        <Link to="/game">
+          <Button secondary>Powrót do mapy</Button>
+        </Link>
       </Layout>
     </div>
   );

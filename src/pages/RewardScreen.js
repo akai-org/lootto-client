@@ -18,6 +18,7 @@ const Astronaut = styled("img")`
   display: block;
   position: sticky;
   bottom: 0;
+  opacity: 0.2;
   transform: translateX(70px);
 `;
 
@@ -33,7 +34,7 @@ export default function RewardScreen() {
   return (
     <div>
       <Navbar stars={wallet.stars} />
-      <Layout distributed spanned narrow inner>
+      <Layout distributed fitted narrow inner>
         <div>
           <Title medium>Gratulacje!</Title>
           <Label>Zdobywasz</Label>
@@ -51,10 +52,10 @@ export default function RewardScreen() {
               </Paragraph>
             </Box>
           </Grid>
+          <Link to="/game">
+            <Button secondary>Powrót do mapy</Button>
+          </Link>
         </div>
-        <Link to="/game">
-          <Button secondary>Powrót do mapy</Button>
-        </Link>
         <Astronaut src={astronaut} />
       </Layout>
     </div>

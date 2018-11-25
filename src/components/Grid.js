@@ -9,7 +9,11 @@ const Grid = styled('div')`
     autofill &&
     css`
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      grid-auto-rows: minmax(100px, auto);
+      grid-auto-rows: minmax(110px, auto);
+
+      div {
+        margin-bottom: 0;
+      }
     `}
 `;
 

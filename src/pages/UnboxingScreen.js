@@ -1,19 +1,19 @@
-import React, { Component, useState } from "react";
-import Carousel from "../components/TutorialCarousel";
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import Paragraph from "../components/Paragraph";
-import Image from "../components/Image";
-import Particles from "../components/Particles";
-import { Redirect } from "react-router-dom";
+import React, { Component, useState } from 'react';
+import Carousel from '../components/TutorialCarousel';
+import Layout from '../components/Layout';
+import Title from '../components/Title';
+import Paragraph from '../components/Paragraph';
+import Image from '../components/Image';
+import Particles from '../components/Particles';
+import { Redirect } from 'react-router-dom';
 
-import Chest from "../assets/Chest.png";
+import Chest from '../assets/Chest.png';
 
-import styled from "react-emotion";
+import styled from 'react-emotion';
 
 // CHECKBOX UNICORN
 
-const WrapperWrapper = styled("div")`
+const WrapperWrapper = styled('div')`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -51,7 +51,7 @@ const WrapperWrapper = styled("div")`
   }
 `;
 
-const ChestWrapper = styled("div")`
+const ChestWrapper = styled('div')`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -59,7 +59,7 @@ const ChestWrapper = styled("div")`
   width: 64%;
 `;
 
-const ChestImage = styled("img")`
+const ChestImage = styled('img')`
   &.opening {
     animation: shake 1s;
   }
@@ -103,7 +103,7 @@ const ChestImage = styled("img")`
 const UnboxingScreen = () => {
   const [stage, setStage] = useState(0);
 
-  const classes = ["", "opening", "calming", "white", "done", "done"];
+  const classes = ['', 'opening', 'calming', 'white', 'done', 'done'];
 
   if (stage === 1) {
     setTimeout(() => {
@@ -126,7 +126,7 @@ const UnboxingScreen = () => {
   if (stage === 4) {
     setTimeout(() => {
       setStage(5);
-    }, 1000);
+    }, 400);
   }
 
   if (stage === 5) {
