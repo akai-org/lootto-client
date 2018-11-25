@@ -5,14 +5,18 @@ const Box = styled('div')`
   padding: 0.8rem 1.2rem;
   background-color: ${({ theme }) => theme.color.elements.box};
   box-sizing: border-box;
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
+  margin-bottom: 1rem;
 
   strong {
     display: block;
     font-weight: ${({ theme }) => theme.font.weight.bold};
   }
+
+  ${({ center }) =>
+    center &&
+    css`
+      text-align: center;
+    `}
 
   ${({ wide, theme }) =>
     wide &&
