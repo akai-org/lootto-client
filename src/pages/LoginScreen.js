@@ -14,8 +14,6 @@ export default function LoginScreen(props) {
   const [token, setToken] = useCookie('token', '');
   const [tutorialCompleted] = useCookie('tutorialCompleted', false);
 
-  if (token) return <Redirect to="/game" />;
-
   return (
     <Fragment>
       <Astronaut floatFromSide />
@@ -33,8 +31,6 @@ export default function LoginScreen(props) {
           isMobile={false}
           callback={response => {
             if (response.accessToken) {
-              console.log(response);
-
               setToken(response.accessToken);
 
               fetch(`${process.env.REACT_APP_API}/auth`, {
