@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useUser from '../hooks/useUser';
 import Navbar from '../components/Navbar';
 import ColumnList from '../components/ColumnList';
@@ -81,9 +82,9 @@ const GameScreen = function(props) {
               </Box>
             ))}
         </ColumnList>
-        <Button as="input" type="submit" secondary>
-          Powrót do mapy
-        </Button>
+        <Link to="/game">
+          <Button secondary>Powrót do mapy</Button>
+        </Link>
       </Layout>
     </div>
   );
