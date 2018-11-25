@@ -8,6 +8,7 @@ import Astronaut from "../components/Astronaut";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { Redirect } from "react-router-dom";
 import useCookie from "../hooks/useCookie";
+import useUser from "../hooks/useUser";
 
 import UserContext from "../contexts/UserContext";
 
@@ -16,7 +17,7 @@ export default function LoginScreen(props) {
   const [token, setToken] = useCookie("token", "");
   const [tutorialCompleted] = useCookie("tutorialCompleted", false);
 
-  const user = useContext(UserContext);
+  const user = useUser();
 
   if (user) {
     return <Redirect to='/game' />
