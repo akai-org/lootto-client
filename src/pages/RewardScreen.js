@@ -14,6 +14,8 @@ import astronaut from "../assets/astronaut-ok.png";
 import styled from "react-emotion";
 
 const Astronaut = styled("img")`
+  width: 80%;
+  display: block;
   position: sticky;
   bottom: 0;
   transform: translateX(70px);
