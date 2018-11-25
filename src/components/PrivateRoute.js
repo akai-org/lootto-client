@@ -24,7 +24,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   };
 
   if (location.error) {
-    return <Redirect to="/" />;
+    console.log('location error', location);
+    //return <Redirect to="/" />;
   }
 
   if (!location.coords) {
