@@ -38,22 +38,18 @@ const boxTypeToAdditional = () => {
 export default function RewardScreen({ onReward }) {
   const user = useUser();
   
-  const [rewarded, setRewarded] = useState(false);
   const chestType = window.location.search.split('=')[1];
   const wonStars = boxTypeToPrize(chestType);
   const wonPowerUps = boxTypeToAdditional(chestType);
 
-  if (!rewarded) {
-    setRewarded(true);
-    authorizedRequest("user/reward", {
-      method: "POST",
-      body: { wonStars, wonPowerUps }
-    }).then(() => onReward(wonStars));
-  }
+  authorizedRequest("user/reward", {
+    method: "POST",
+    body: { wonStars, wonPowerUps }
+  });
 
   return (
     <div>
-      <Navbar stars={user.starsBalance} />
+      <Navbar stars={user.starsBalance + wonStars} />
       <Layout distributed fitted narrow inner>
         <div>
           <Title medium>Gratulacje!</Title>
