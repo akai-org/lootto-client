@@ -29,7 +29,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   }
 
   if (!location.coords) {
-    getLocation();
+    // getLocation();
     return <Route {...rest} render={props => <Loading {...props} />} />;
   }
 
