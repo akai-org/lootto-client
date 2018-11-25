@@ -35,7 +35,7 @@ export default function LoginScreen(props) {
           subtitle="Witamy w grze miejskiej wykorzystującej goelokalizację, inspirowanej Lotto, w której wygrasz prawdziwe pieniądze i będziesz się świetnie bawić z przyjaciółmi!"
         />
         <FacebookLogin
-          appId={process.env.FACEBOOK_APP_ID}
+          appId="2215158405440301"
           autoLoad={true}
           fields="name,email,picture"
           isMobile={false}
