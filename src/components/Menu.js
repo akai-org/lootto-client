@@ -85,11 +85,6 @@ const Menu = ({ isVisible, onClose }) => {
 
   const logout = () => setToken("");
 
-  if (!token) {
-    console.log('sorry to see you go');
-    return <Redirect to="/"></Redirect>;
-  }
-
   return (<>
     <MenuBox isVisible={isVisible}>
       <Layout>
