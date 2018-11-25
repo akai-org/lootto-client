@@ -4,6 +4,7 @@ const Box = styled('div')`
   border-radius: 20px;
   padding: 0.8rem 1.2rem;
   background-color: ${({ theme }) => theme.color.elements.box};
+  box-sizing: border-box;
   &:not(:last-child) {
     margin-bottom: 2rem;
   }
@@ -20,7 +21,6 @@ const Box = styled('div')`
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 80%;
 
       img {
         max-width: 3.6rem;

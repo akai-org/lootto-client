@@ -1,22 +1,24 @@
-import React, { Fragment } from "react";
-import Layout from "../components/Layout";
-import PropTypes from "prop-types";
-import Logo from "../components/Logo";
-import Button from "../components/Button";
-import Particles from "../components/Particles.js";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { Redirect } from "react-router-dom";
-import useCookie from "../hooks/useCookie";
+import React, { Fragment } from 'react';
+import Layout from '../components/Layout';
+import PropTypes from 'prop-types';
+import Logo from '../components/Logo';
+import Button from '../components/Button';
+import Particles from '../components/Particles.js';
+import Astronaut from '../components/Astronaut';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { Redirect } from 'react-router-dom';
+import useCookie from '../hooks/useCookie';
 
 export default function LoginScreen(props) {
   const { history } = props;
-  const [token, setToken] = useCookie("token", "");
-  const [tutorialCompleted] = useCookie("tutorialCompleted", false);
+  const [token, setToken] = useCookie('token', '');
+  const [tutorialCompleted] = useCookie('tutorialCompleted', false);
 
   if (token) return <Redirect to="/game" />;
 
   return (
     <Fragment>
+      <Astronaut floatFromSide />
       <Particles />
       <Layout distributed spanned narrow>
         <Logo
@@ -35,18 +37,18 @@ export default function LoginScreen(props) {
 
               setToken(response.accessToken);
 
-              fetch(`${process.env.REACT_ENV_API}/register`, {
+              fetch(`${process.env.REACT_ENV_API}/auth`, {
                 method: "POST",
                 body: JSON.stringify({
-                  t: response.accessToken
+                  token: response.accessToken
                 })
-              })
-                .then(res => res.json())
+              }).then(res => res.json())
                 .then(json => {
+                  console.log(json);
                   if (tutorialCompleted) {
-                    history.push("/game");
+                    history.push('/game');
                   } else {
-                    history.push("/tutorial");
+                    history.push('/tutorial');
                   }
                 });
             }
