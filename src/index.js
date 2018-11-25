@@ -40,9 +40,9 @@ const App = function() {
           <PrivateRoute path="/game" component={GameScreen} />
           <PrivateRoute path="/planet" component={PlanetScreen} />
           <PrivateRoute path="/unboxing" component={UnboxingScreen} />
-          {user && <Redirect to="/game" />}
         </Switch>
       </Router>
+      {user && <Redirect to="/game" />}
     </Fragment>
   </ThemeProvider>
   )
