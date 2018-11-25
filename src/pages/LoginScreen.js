@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
 import Particles from '../components/Particles.js';
+import Astronaut from '../components/Astronaut';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { Redirect } from 'react-router-dom';
 import useCookie from '../hooks/useCookie';
@@ -17,6 +18,7 @@ export default function LoginScreen(props) {
 
   return (
     <Fragment>
+      <Astronaut floatFromSide />
       <Particles />
       <Layout distributed spanned narrow>
         <Logo

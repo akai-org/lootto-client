@@ -9,6 +9,8 @@ import useCookie from "../hooks/useCookie";
 import useWallet from "../hooks/useWallet";
 import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
+import Box from "../components/Box";
+import StarCount from "../components/StarCount";
 
 const SaldoWrapper = styled('div')`
   display: flex;
@@ -58,10 +60,14 @@ export default function ExchangeScreen() {
           {
             buyingOptions.map(({ stars, currency }) => (
               <Column>
-                
+                <Box>
+                  
+                  <StarCount>{stars}</StarCount>
+                </Box>
                 <Button 
                   primary
                   small
+                  onClick={() => { }}
                 >
                   Kup
                 </Button>
