@@ -12,6 +12,7 @@ import useAchievements from '../hooks/useAchievements';
 import usePopup from '../hooks/usePopup';
 import { Column } from '../components/Columns';
 import Grid from '../components/Grid';
+import Title from '../components/Title';
 import Popup from '../components/Popup';
 import { authorizedRequest } from '../utils/request';
 
@@ -20,17 +21,16 @@ export default function GameScreen() {
   const [popup, setPopup] = usePopup();
 
   if (!achievements.loaded) {
-    authorizedRequest('user/achievements')
-      .then(list => {
-        setAchievements({ list, loaded: true });
-      });
+    authorizedRequest('user/achievements').then(list => {
+      setAchievements({ list, loaded: true });
+    });
   }
 
   return (
     <div>
       <Layout distributed spanned narrow>
         <BackButton />
-        <h1>Osiągnięcia</h1>
+        <Title medium>Osiągnięcia</Title>
         {popup.isActive ? (
           <Popup
             name={popup.name}
