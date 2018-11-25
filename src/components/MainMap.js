@@ -45,10 +45,12 @@ const MapScreen = props => {
     props.userLocation.coords.longitude
   ]);
 
-  const userMarker = icon({
-    iconUrl: props.userPicture.data.url,
-    iconSize: [50, 50]
-  });
+  // const userMarker = icon({
+  //   iconUrl: props.userPicture.data.url,
+  //   iconSize: [50, 50]
+  // });
+
+  console.log(props.userPicture);
 
   const [zoom, setZoom] = useState(16);
 
@@ -110,7 +112,7 @@ const MapScreen = props => {
                 ) : null
               )
             : null}
-          <Marker icon={userMarker} position={position} />
+          <Marker position={position} />
         </Map>
       </MapWrapper>
     </div>

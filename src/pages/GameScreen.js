@@ -13,6 +13,7 @@ const GameScreen = props => {
     console.log(location);
     getLocation();
   }
+  console.log(user);
   return (
     <>
       <Navbar stars={user.starsBalance} />
