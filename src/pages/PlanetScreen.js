@@ -33,7 +33,7 @@ export default function GameScreen() {
 
   return (
     <div>
-      <Layout distributed spanned narrow>
+      <Layout distributed fitted narrow>
         <Navbar stars={wallet.stars} />
         <ColumnList>
           {chests.loaded &&
