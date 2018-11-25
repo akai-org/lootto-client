@@ -36,9 +36,10 @@ const Box = styled('div')`
     css`
       display: inline-block;
       margin-bottom: 2rem;
+      flex: 1;
 
       img {
-        max-width: 8rem;
+        max-width: 4rem;
       }
     `}
 `;

@@ -8,36 +8,49 @@ import Box from '../components/Box';
 import Button from '../components/Button';
 import StarCount from '../components/StarCount';
 import Layout from '../components/Layout';
-import BackButton from '../components/BackButton';
-import useAchievements from '../hooks/useAchievements';
-import { Column } from '../components/Columns';
 
 export default function GameScreen() {
-  const [achievements, setAchievements] = useAchievements();
+  const [wallet, setWallet] = useWallet();
+  const [chests, setChests] = useChests();
 
-  if (!achievements.loaded) {
-    fetch(`${process.env.REACT_APP_API}/user/achievements`)
+  if (!chests.loaded) {
+    fetch(`${process.env.REACT_APP_API}/planet`)
       .then(res => res.json())
       .then(list => {
-        setAchievements({ list, loaded: true });
+        setChests({ list, loaded: true });
       });
   }
+
+  if (!wallet.loaded) {
+    fetch(`${process.env.REACT_APP_API}/user`)
+      .then(res => res.json())
+      .then(data => {
+        setWallet({ ...data.wallet, loaded: true });
+      });
+  }
+
+  console.log(chests);
 
   return (
     <div>
       <Layout distributed spanned narrow>
-        <BackButton />
-        <Column>
-          {achievements.loaded &&
-            achievements.list.map(achievement => (
-              <Box square>
+        <Navbar stars={wallet.stars} />
+        <ColumnList>
+          {chests.loaded &&
+            chests.list.map(chest => (
+              <Box wide>
                 <img src="/images/Chest.png" />
                 <div className="chest__text">
-                  {achievement.name && <strong>{achievement.name}</strong>}
+                  {chest.name && <strong>{chest.name}</strong>}
+                  {/* {chest.price && <span>{chest.price}</span>} */}
+                  <StarCount>5</StarCount>
                 </div>
+                <Button primary small narrow>
+                  otwórz
+                </Button>
               </Box>
             ))}
-        </Column>
+        </ColumnList>
         <Button as="input" type="submit" secondary>
           Zaloguj się przez facebook
         </Button>
