@@ -7,7 +7,7 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from './styles/theme';
 import * as serviceWorker from './serviceWorker';
 import LoginScreen from './pages/LoginScreen';
-import SettingsScreen from './pages/SettingsScreen';
+import AccountScreen from './pages/AccountScreen';
 import AchievementsScreen from './pages/AchievementsScreen';
 import TutorialScreen from './pages/TutorialScreen';
 import GameScreen from './pages/GameScreen';
@@ -26,7 +26,7 @@ render(
         <Switch>
           <Route exact path="/" component={LoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
-          <PrivateRoute path="/settings" component={SettingsScreen} />
+          <PrivateRoute path="/account" component={AccountScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
           <PrivateRoute path="/exchange" component={ExchangeScreen} />
           <PrivateRoute path="/game" component={GameScreen} />
