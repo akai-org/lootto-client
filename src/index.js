@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { render } from 'react-dom';
 import { Switch } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -19,12 +19,20 @@ import PlanetScreen from './pages/PlanetScreen';
 
 injectGlobal(GlobalStyle);
 
-render(
-  <ThemeProvider theme={theme}>
+const App = function() {
+  const [user, setUser] = useState(null);
+  const renderLoginScreen = (props) => (
+    <LoginScreen onLogin={setUser} {...props} />
+  );
+
+  console.log('current user is', user);
+
+  return (
+    <ThemeProvider theme={theme}>
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" component={LoginScreen} />
+          <Route exact path="/" render={renderLoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
           <PrivateRoute path="/settings" component={SettingsScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
@@ -34,7 +42,12 @@ render(
         </Switch>
       </Router>
     </Fragment>
-  </ThemeProvider>,
+  </ThemeProvider>
+  )
+}
+
+render(
+  <App />,
   document.getElementById('root')
 );
 serviceWorker.unregister();

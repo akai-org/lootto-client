@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom';
 import useCookie from '../hooks/useCookie';
 
 export default function LoginScreen(props) {
-  const { history } = props;
+  const { history, onLogin } = props;
   const [token, setToken] = useCookie('token', '');
   const [tutorialCompleted] = useCookie('tutorialCompleted', false);
 
@@ -47,7 +47,8 @@ export default function LoginScreen(props) {
                 })
               }).then(res => res.json())
                 .then(json => {
-                  console.log(json);
+                  onLogin(json);
+
                   if (tutorialCompleted) {
                     history.push('/game');
                   } else {
