@@ -28,7 +28,7 @@ const theme = {
   font: {
     family: 'Poppins, sans-serif',
     size: {
-      base: '16px',
+      base: '14px',
       heading: {
         primary: '3rem',
         secondary: '2rem',

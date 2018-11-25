@@ -36,7 +36,7 @@ class TutorialScreen extends Component {
     return (
       <>
         <Particles />
-        <Layout narrow spanned>
+        <Layout narrow fitted>
           <Carousel>
             {
               this.slides.map(({ title, text, image }, index) => (
