@@ -11,6 +11,7 @@ import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
 import Box from "../components/Box";
 import StarCount from "../components/StarCount";
+import Image from "../components/Image";
 
 const SaldoWrapper = styled('div')`
   display: flex;
@@ -61,7 +62,7 @@ export default function ExchangeScreen() {
             buyingOptions.map(({ stars, currency }) => (
               <Column>
                 <Box>
-                  
+                  <Image center></Image>
                   <StarCount>{stars}</StarCount>
                 </Box>
                 <Button 
