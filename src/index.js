@@ -48,6 +48,7 @@ const App = function() {
   const renderExchangePage = (props) => <ExchangeScreen onExchange={onExchange} {...props}></ExchangeScreen>;
 
   const onBalanceChange = (moneyBalance) => {
+    console.log('balance:', moneyBalance);
     setUser({...user, moneyBalance});
   };
   const renderAccountPage = (props) => <AccountScreen onBalanceChange={onBalanceChange} {...props}></AccountScreen>
