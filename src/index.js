@@ -7,7 +7,6 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from './styles/theme';
 import * as serviceWorker from './serviceWorker';
 import LoginScreen from './pages/LoginScreen';
-import SettingsScreen from './pages/SettingsScreen';
 import AchievementsScreen from './pages/AchievementsScreen';
 import TutorialScreen from './pages/TutorialScreen';
 import GameScreen from './pages/GameScreen';
@@ -16,6 +15,7 @@ import GlobalStyle from './styles/GlobalStyle';
 import ExchangeScreen from './pages/ExchangeScreen';
 import UnboxingScreen from './pages/UnboxingScreen';
 import PlanetScreen from './pages/PlanetScreen';
+import AccountScreen from "./pages/AccountScreen";
 
 injectGlobal(GlobalStyle);
 
@@ -34,11 +34,12 @@ const App = function() {
         <Switch>
           <Route exact path="/" render={renderLoginScreen} />
           <PrivateRoute path="/tutorial" component={TutorialScreen} />
-          <PrivateRoute path="/settings" component={SettingsScreen} />
+          <PrivateRoute path="/account" component={AccountScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
           <PrivateRoute path="/exchange" component={ExchangeScreen} />
           <PrivateRoute path="/game" component={GameScreen} />
           <PrivateRoute path="/planet" component={PlanetScreen} />
+          <PrivateRoute path="/unboxing" component={UnboxingScreen} />
         </Switch>
       </Router>
     </Fragment>

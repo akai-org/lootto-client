@@ -1,6 +1,7 @@
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router';
 import arrowBack from '../assets/back.svg';
 
 const BackIcon = styled('a')`
@@ -27,4 +28,4 @@ BackButton.propTypes = {
   }).isRequired
 };
 
-export default BackButton;
+export default withRouter(BackButton);
