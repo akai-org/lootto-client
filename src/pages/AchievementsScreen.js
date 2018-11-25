@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useWallet from '../hooks/useWallet';
 import useChests from '../hooks/useChests';
 import Navbar from '../components/Navbar';
 import ColumnList from '../components/ColumnList';
@@ -14,14 +13,14 @@ import usePopup from '../hooks/usePopup';
 import { Column } from '../components/Columns';
 import Grid from '../components/Grid';
 import Popup from '../components/Popup';
+import { authorizedRequest } from '../utils/request';
 
 export default function GameScreen() {
   const [achievements, setAchievements] = useAchievements();
   const [popup, setPopup] = usePopup();
 
   if (!achievements.loaded) {
-    fetch(`${process.env.REACT_APP_API}/user/achievements`)
-      .then(res => res.json())
+    authorizedRequest('user/achievements')
       .then(list => {
         setAchievements({ list, loaded: true });
       });

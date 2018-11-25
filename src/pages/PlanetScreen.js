@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import StarCount from '../components/StarCount';
 import Layout from '../components/Layout';
 import { withRouter } from 'react-router';
+import { authorizedRequest } from '../utils/request';
 
 const GameScreen = function(props) {
   const user = useUser();
@@ -14,8 +15,7 @@ const GameScreen = function(props) {
 
   if (!chests.loaded) {
     const planetId = window.location.search.split('=')[1];
-    fetch(`${process.env.REACT_APP_API}/planet/${planetId}`)
-      .then(res => res.json())
+    authorizedRequest(`planet/${planetId}`)
       .then(list => {
         setChests({ list, loaded: true });
       });

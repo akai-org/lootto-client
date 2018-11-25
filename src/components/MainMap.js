@@ -4,6 +4,7 @@ import styled from 'react-emotion';
 import '../../node_modules/leaflet/dist/leaflet.css';
 import { icon } from 'leaflet';
 import { withRouter } from 'react-router';
+import { authorizedRequest } from '../utils/request';
 
 const markerPlanet1 = icon({
   iconUrl: require('../assets/planet1.png'),
@@ -51,8 +52,7 @@ const MapScreen = props => {
     fetchMarkers();
   }, []);
   const fetchMarkers = () => {
-    fetch(`${process.env.REACT_APP_API}/planet`)
-      .then(res => res.json())
+    authorizedRequest('planet')
       .then(data =>
         data.map(({ _id, name, type, longitude, latitude }) => ({
           planetId: _id,
