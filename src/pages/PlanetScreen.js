@@ -41,8 +41,7 @@ export default function GameScreen() {
               <div className="chest__text">
                 {chest.name && <strong>{chest.name}</strong>}
                 {/* {chest.price && <span>{chest.price}</span>} */}
-                <StarCount />
-                {<span>{5}</span>}
+                <StarCount>5</StarCount>
               </div>
               <Button primary small narrow>
                 otwórz
