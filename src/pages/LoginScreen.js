@@ -50,7 +50,7 @@ export default function LoginScreen(props) {
               })
                 .then(res => res.json())
                 .then(json => {
-                  setUser(json);
+                  onLogin(json);
                   console.log(json);
                   if (tutorialCompleted) {
                     history.push("/game");
