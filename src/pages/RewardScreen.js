@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useUser from '../hooks/useUser';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
@@ -38,13 +38,18 @@ const boxTypeToAdditional = () => {
 export default function RewardScreen({ onReward }) {
   const user = useUser();
   
+  const [rewarded, setRewarded] = useState(false);
   const chestType = window.location.search.split('=')[1];
   const wonStars = boxTypeToPrize(chestType);
+  const wonPowerUps = boxTypeToAdditional(chestType);
 
-  authorizedRequest("user/reward", {
-    method: "POST",
-    body: { wonStars }
-  }).then(() => onReward(wonStars));
+  if (!rewarded) {
+    authorizedRequest("user/reward", {
+      method: "POST",
+      body: { wonStars, wonPowerUps }
+    }).then(() => onReward(wonStars));
+    setRewarded(true);
+  }
 
   return (
     <div>
@@ -61,7 +66,7 @@ export default function RewardScreen({ onReward }) {
               </Paragraph>
             </Box>
             <Box>
-              <Caption big>{boxTypeToAdditional(chestType)}</Caption>
+              <Caption big>{wonPowerUps}</Caption>
               <Paragraph small inner>
                 Dodatkowy bonus
               </Paragraph>
