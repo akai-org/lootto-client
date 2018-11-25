@@ -22,8 +22,21 @@ import UserContext from "./contexts/UserContext";
 
 injectGlobal(GlobalStyle);
 
+const dev = process.env.NODE_ENV == 'development';
+const defaultUser = {
+  "moneyBalance": 0,
+  "starsBalance": 14,
+  "experience": 0,
+  "powerUps": [],
+  "achievements": [],
+  "facebookId": "2227976820757967",
+  "name": "Piotr Ptak",
+  "email": "piotr.a.ptak@icloud.com",
+  "__v": 0
+};
+
 const App = function() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(dev ? defaultUser : null);
   const renderMainPage = (props) => (
     <LoginScreen onLogin={setUser} {...props} />
   );
