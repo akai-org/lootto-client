@@ -9,10 +9,12 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { Redirect } from 'react-router-dom';
 import useCookie from '../hooks/useCookie';
 
-export default function LoginScreen(props) {
+export default function LoginScreen(props, context) {
   const { history, onLogin } = props;
   const [token, setToken] = useCookie('token', '');
   const [tutorialCompleted] = useCookie('tutorialCompleted', false);
+
+  console.log('context', context);
 
   return (
     <Fragment>
