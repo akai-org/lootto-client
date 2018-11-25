@@ -9,11 +9,12 @@ import StarCount from '../components/StarCount';
 import Layout from '../components/Layout';
 import { withRouter } from 'react-router';
 
-const GameScreen = props => {
+const GameScreen = function(props) {
   const [wallet, setWallet] = useWallet();
   const [chests, setChests] = useChests();
 
   const planetId = window.location.search.split('=')[1];
+  console.log(chests);
 
   if (!chests.loaded) {
     fetch(`${process.env.REACT_APP_API}/planet/${planetId}`)
@@ -48,6 +49,8 @@ const GameScreen = props => {
     else if (type === 'chest3') return 'Hiper Mega Lootto';
     return 'Lootto';
   };
+
+  console.log(chests);
 
   return (
     <div>
