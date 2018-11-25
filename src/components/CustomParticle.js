@@ -1,63 +1,66 @@
-// function Particle( x, y, radius ) {
-// 	this.init( x, y, radius );
-// }
+function Particle(x, y, radius) {
+  this.init(x, y, radius);
+}
 
-// Particle.prototype = {
+Particle.prototype = {
+  init: function(x, y, radius) {
+    this.alive = true;
 
-// 	init: function( x, y, radius ) {
+    this.radius = radius || 10;
+    this.wander = 0.15;
+    this.theta = random(TWO_PI);
+    this.drag = 0.92;
+    this.color = "#fff";
 
-// 		this.alive = true;
+    this.x = x || 0.0;
+    this.y = y || 0.0;
 
-// 		this.radius = radius || 10;
-// 		this.wander = 0.15;
-// 		this.theta = random( TWO_PI );
-// 		this.drag = 0.92;
-// 		this.color = '#fff';
+    this.vx = 0.0;
+    this.vy = 0.0;
+  },
 
-// 		this.x = x || 0.0;
-// 		this.y = y || 0.0;
+  move: function() {
+    this.x += this.vx;
+    this.y += this.vy;
 
-// 		this.vx = 0.0;
-// 		this.vy = 0.0;
-// 	},
+    this.vx *= this.drag;
+    this.vy *= this.drag;
 
-// 	move: function() {
+    this.theta += random(-0.5, 0.5) * this.wander;
+    this.vx += sin(this.theta) * 0.1;
+    this.vy += cos(this.theta) * 0.1;
 
-// 		this.x += this.vx;
-// 		this.y += this.vy;
+    this.radius *= 0.96;
+    this.alive = this.radius > 0.5;
+  },
 
-// 		this.vx *= this.drag;
-// 		this.vy *= this.drag;
+  draw: function(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, TWO_PI);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+};
 
-// 		this.theta += random( -0.5, 0.5 ) * this.wander;
-// 		this.vx += sin( this.theta ) * 0.1;
-// 		this.vy += cos( this.theta ) * 0.1;
+// ----------------------------------------
+// Example
+// ----------------------------------------
 
-// 		this.radius *= 0.96;
-// 		this.alive = this.radius > 0.5;
-// 	},
+const CustomParticle = () => {
+  var MAX_PARTICLES = 280;
+  var COLOURS = [
+    "#4ee1ec",
+    "#3786b3",
+    "#3ca5c8",
+    "#54d4ff",
+    "#e2d171",
+    "#eedc7b",
+    "#fff8d0"
+  ];
 
-// 	draw: function( ctx ) {
-
-// 		ctx.beginPath();
-// 		ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
-// 		ctx.fillStyle = this.color;
-// 		ctx.fill();
-// 	}
-// };
-
-// // ----------------------------------------
-// // Example
-// // ----------------------------------------
-
-// const CustomParticle = () => {
-//   var MAX_PARTICLES = 280;
-//   var COLOURS = [ '#4ee1ec', '#3786b3', '#3ca5c8', '#54d4ff', '#e2d171', '#eedc7b', '#fff8d0' ];
-
-//   var particles = [];
-//   var pool = [];
-
-// }
+  var particles = [];
+  var pool = [];
+};
 
 // var demo = Sketch.create({
 // 	container: document.getElementById( 'container' )

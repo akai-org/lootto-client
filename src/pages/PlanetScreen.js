@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useWallet from '../hooks/useWallet';
-import useChests from '../hooks/useChests';
-import Navbar from '../components/Navbar';
-import ColumnList from '../components/ColumnList';
-import Box from '../components/Box';
-import Button from '../components/Button';
-import StarCount from '../components/StarCount';
-import Layout from '../components/Layout';
+import React from "react";
+import { Link } from "react-router-dom";
+import useWallet from "../hooks/useWallet";
+import useChests from "../hooks/useChests";
+import Navbar from "../components/Navbar";
+import ColumnList from "../components/ColumnList";
+import Box from "../components/Box";
+import Button from "../components/Button";
+import StarCount from "../components/StarCount";
+import Layout from "../components/Layout";
 
 export default function GameScreen() {
   const [wallet, setWallet] = useWallet();
@@ -21,13 +21,13 @@ export default function GameScreen() {
       });
   }
 
-  if (!wallet.loaded) {
-    fetch(`${process.env.REACT_APP_API}/user`)
-      .then(res => res.json())
-      .then(data => {
-        setWallet({ ...data.wallet, loaded: true });
-      });
-  }
+  // if (!wallet.loaded) {
+  //   fetch(`${process.env.REACT_APP_API}/user`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setWallet({ ...data.wallet, loaded: true });
+  //     });
+  // }
 
   console.log(chests);
 
