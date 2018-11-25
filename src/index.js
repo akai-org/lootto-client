@@ -16,6 +16,7 @@ import ExchangeScreen from './pages/ExchangeScreen';
 import UnboxingScreen from './pages/UnboxingScreen';
 import PlanetScreen from './pages/PlanetScreen';
 import AccountScreen from "./pages/AccountScreen";
+import SocialScreen from "./pages/SocialScreen";
 
 injectGlobal(GlobalStyle);
 
@@ -37,6 +38,7 @@ const App = function() {
           <PrivateRoute path="/account" component={AccountScreen} />
           <PrivateRoute path="/achievements" component={AchievementsScreen} />
           <PrivateRoute path="/exchange" component={ExchangeScreen} />
+          <PrivateRoute path="/social" component={SocialScreen} />
           <PrivateRoute path="/game" component={GameScreen} />
           <PrivateRoute path="/planet" component={PlanetScreen} />
           <PrivateRoute path="/unboxing" component={UnboxingScreen} />

@@ -76,7 +76,8 @@ const options = [
   { label: "Twoje konto", path: "/account" },
   { label: "Kantor", path: "/exchange" },
   { label: "Bonusy", path: "/powerups" },
-  { label: "Osiągnięcia", path: "/achievements" }
+  { label: "Osiągnięcia", path: "/achievements" },
+  { label: "Społeczność", path: "/social" },
 ];
 
 const logout = () => {
