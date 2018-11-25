@@ -1,4 +1,4 @@
-import theme from "./theme";
+import theme from './theme';
 
 const GlobalStyle = `
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
@@ -17,7 +17,7 @@ const GlobalStyle = `
     font-family: ${theme.font.family};
     font-weight: ${theme.font.weight.base};
     margin: 0;
-    overflow: hidden !important;   
+    overflow-x: hidden !important;   
   }
 
   h1, h2, h3, h4, h5, h6 {
