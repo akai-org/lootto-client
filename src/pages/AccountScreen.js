@@ -66,7 +66,7 @@ export default function SettingsScreen({ onBalanceChange }) {
         <Column>
           <Box>
             <Caption big>{achievement}</Caption>
-            <Paragraph small inner>Zebrane achievementy.</Paragraph>
+            <Paragraph small inner>Zebrane osiągnięcia.</Paragraph>
           </Box>
         </Column>
       </ColumnContainer>
