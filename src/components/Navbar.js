@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import styled from "react-emotion";
+import React, { Fragment, useState } from 'react';
+import styled from 'react-emotion';
 
-import Menu from "./Menu";
-import Layout from "./Layout";
-import IconButton from "./IconButton";
-import { Link } from "react-router-dom";
+import Menu from './Menu';
+import Layout from './Layout';
+import IconButton from './IconButton';
+import { Link } from 'react-router-dom';
 
-import burger from "../assets/burger.svg";
-import star from "../assets/star.svg";
-import plus from "../assets/plus.svg";
+import burger from '../assets/burger.svg';
+import plus from '../assets/plus.svg';
+import StarCount from '../components/StarCount';
 
 const Header = styled('header')`
   background: ${props => props.theme.color.accent.primary.base};
@@ -16,26 +16,22 @@ const Header = styled('header')`
   padding: 2;
   display: flex;
   justify-content: space-between;
+
+  .menu__stars {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const MenuIcon = ({ onClick }) => (
-  <IconButton onClick={onClick} src={burger} width="25" height="25" alt="Pokaż menu" />
+  <IconButton
+    onClick={onClick}
+    src={burger}
+    width="25"
+    height="25"
+    alt="Pokaż menu"
+  />
 );
-
-const StarCount = styled('span')`
-  position: relative;
-  font-weight: 700;
-  padding-right: 16px;
-
-  &::before {
-    content: url(${star});
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -24px;
-    top: 1px;
-  }
-`
 
 function Navbar({ stars }) {
   const [menuVisibility, setMenuVisibility] = useState(false);
@@ -43,16 +39,18 @@ function Navbar({ stars }) {
   const hideMenu = () => setMenuVisibility(false);
 
   return (
-    <Layout>
+    <Fragment>
       <Header>
-        <MenuIcon onClick={showMenu}></MenuIcon>
-        <div>
-          <StarCount>{stars}</StarCount>
-          <Link to='/exchange'><IconButton src={plus} width="12" height="12" /></Link>
+        <MenuIcon onClick={showMenu} />
+        <div className="menu__stars">
+          <StarCount big>{stars}</StarCount>
+          <Link to="/exchange">
+            <IconButton src={plus} width="12" height="12" />
+          </Link>
         </div>
       </Header>
       <Menu isVisible={menuVisibility} onClose={hideMenu} />
-    </Layout>
+    </Fragment>
   );
 }
 

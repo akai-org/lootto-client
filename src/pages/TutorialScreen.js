@@ -7,6 +7,7 @@ import Image from "../components/Image";
 import planets from '../assets/tutorial/planets-carousel.png';
 import bag from '../assets/tutorial/bag-carousel.png';
 import chest from '../assets/tutorial/chest-carousel.png';
+import Particles from "../components/Particles";
 
 class TutorialScreen extends Component {
   constructor(props) {
@@ -33,20 +34,22 @@ class TutorialScreen extends Component {
 
   render() {
     return (
-      <Layout narrow spanned>
-        <Carousel>
-          {
-            this.slides.map(({ title, text, image }, index) => (
-              <div key={index} spanned distributed narrow>
-                <Image big centered src={image} />
-                <Title medium>{title}</Title>
-                <Paragraph>{text}</Paragraph>
-              </div>
-            ))
-          }
-        </Carousel>
-      </Layout>
-      
+      <>
+        <Particles />
+        <Layout narrow spanned>
+          <Carousel>
+            {
+              this.slides.map(({ title, text, image }, index) => (
+                <div key={index} spanned distributed narrow>
+                  <Image big centered src={image} />
+                  <Title medium>{title}</Title>
+                  <Paragraph>{text}</Paragraph>
+                </div>
+              ))
+            }
+          </Carousel>
+        </Layout>
+      </>
     );
   }
 }
