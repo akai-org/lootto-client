@@ -15,10 +15,9 @@ const GameScreen = function(props) {
 
   if (!chests.loaded) {
     const planetId = window.location.search.split('=')[1];
-    authorizedRequest(`planet/${planetId}`)
-      .then(list => {
-        setChests({ list, loaded: true });
-      });
+    authorizedRequest(`planet/${planetId}`).then(list => {
+      setChests({ list, loaded: true });
+    });
   }
 
   // if (!wallet.loaded) {

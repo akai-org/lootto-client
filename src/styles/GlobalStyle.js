@@ -51,6 +51,10 @@ const GlobalStyle = `
     font-family: inherit;
   }
 
+  button {
+    font-family: inherit;
+  }
+
   img {
     max-width: 100%;
   }

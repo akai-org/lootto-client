@@ -36,7 +36,7 @@ const Button = styled('button')`
     narrow &&
     css`
       width: initial;
-      min-width: 100px;
+      min-width: 80px;
     `}
 `;
 
