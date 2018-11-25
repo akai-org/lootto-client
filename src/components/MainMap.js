@@ -22,7 +22,7 @@ const iconTypeToIcon = type => {
 const MapWrapper = styled('div')`
   .leaflet-container {
     width: 100vw;
-    height: calc(100vh - 114px);
+    height: calc(100vh - 78px);
   }
 `;
 
