@@ -8,10 +8,13 @@ import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
 import Box from "../components/Box";
 import Paragraph from "../components/Paragraph";
+import useUser from "../hooks/useUser";
 
 export default function SettingsScreen() {
+  const user = useUser();
+
   // Mock
-  const currency = 47;
+  const currency = user.moneyBalance;
   const thresh = 50;
   const winnings = 23;
   const bonus = 3;
