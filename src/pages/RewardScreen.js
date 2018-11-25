@@ -44,11 +44,11 @@ export default function RewardScreen({ onReward }) {
   const wonPowerUps = boxTypeToAdditional(chestType);
 
   if (!rewarded) {
+    setRewarded(true);
     authorizedRequest("user/reward", {
       method: "POST",
       body: { wonStars, wonPowerUps }
     }).then(() => onReward(wonStars));
-    setRewarded(true);
   }
 
   return (
