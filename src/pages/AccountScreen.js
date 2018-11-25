@@ -11,7 +11,7 @@ import Paragraph from "../components/Paragraph";
 import useUser from "../hooks/useUser";
 import { authorizedRequest } from "../utils/request";
 
-export default function SettingsScreen(onBalanceChange) {
+export default function SettingsScreen({ onBalanceChange }) {
   const user = useUser();
 
   const currency = user.moneyBalance;
@@ -33,7 +33,6 @@ export default function SettingsScreen(onBalanceChange) {
     authorizedRequest('user/deposit', { method: 'POST', body: { amount }})
       .then(({moneyBalance}) => onBalanceChange(moneyBalance));
   };
-
 
   return (
     <Layout spanned narrow>
