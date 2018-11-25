@@ -14,7 +14,7 @@ const GameScreen = props => {
 
   return (
     <>
-      <Navbar stars={12} />
+      <Navbar stars={wallet.stars} />
       <MainMap location={props.location} />
     </>
   );
