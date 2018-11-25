@@ -10,6 +10,7 @@ import StarCount from '../components/StarCount';
 import Layout from '../components/Layout';
 import BackButton from '../components/BackButton';
 import useAchievements from '../hooks/useAchievements';
+import { Column } from '../components/Columns';
 
 export default function GameScreen() {
   const [achievements, setAchievements] = useAchievements();
@@ -26,20 +27,17 @@ export default function GameScreen() {
     <div>
       <Layout distributed spanned narrow>
         <BackButton />
-        {achievements.loaded &&
-          achievements.list.map(achievement => (
-            <Box wide>
-              <img src="/images/Chest.png" />
-              <div className="chest__text">
-                {achievement.name && <strong>{achievement.name}</strong>}
-                {/* {chest.price && <span>{chest.price}</span>} */}
-                <StarCount>5</StarCount>
-              </div>
-              <Button primary small narrow>
-                otwórz
-              </Button>
-            </Box>
-          ))}
+        <Column>
+          {achievements.loaded &&
+            achievements.list.map(achievement => (
+              <Box square>
+                <img src="/images/Chest.png" />
+                <div className="chest__text">
+                  {achievement.name && <strong>{achievement.name}</strong>}
+                </div>
+              </Box>
+            ))}
+        </Column>
         <Button as="input" type="submit" secondary>
           Zaloguj się przez facebook
         </Button>
