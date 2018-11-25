@@ -17,7 +17,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         setLocation(location);
       },
       err => {
-        setLocation({ error: `ERROR(${err.code}): ${err.message}` });
+        // setLocation({ error: `ERROR(${err.code}): ${err.message}` });
       },
       options
     );
