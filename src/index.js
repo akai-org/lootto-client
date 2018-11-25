@@ -15,43 +15,49 @@ import GlobalStyle from './styles/GlobalStyle';
 import ExchangeScreen from './pages/ExchangeScreen';
 import UnboxingScreen from './pages/UnboxingScreen';
 import PlanetScreen from './pages/PlanetScreen';
-import AccountScreen from "./pages/AccountScreen";
-import SocialScreen from "./pages/SocialScreen";
-import RewardScreen from "./pages/RewardScreen";
-import UserContext from "./contexts/UserContext";
+import AccountScreen from './pages/AccountScreen';
+import SocialScreen from './pages/SocialScreen';
+import RewardScreen from './pages/RewardScreen';
+import UserContext from './contexts/UserContext';
 
 injectGlobal(GlobalStyle);
 
 const dev = process.env.NODE_ENV == 'development';
 const defaultUser = {
-  "moneyBalance": 36,
-  "starsBalance": 14,
-  "experience": 0,
-  "powerUps": [],
-  "achievements": [],
-  "facebookId": "2227976820757967",
-  "name": "Piotr Ptak",
-  "email": "piotr.a.ptak@icloud.com",
-  "__v": 0
+  moneyBalance: 36,
+  starsBalance: 14,
+  experience: 0,
+  powerUps: [],
+  achievements: [],
+  facebookId: '2227976820757967',
+  name: 'Piotr Ptak',
+  email: 'piotr.a.ptak@icloud.com',
+  __v: 0
 };
 
 const App = function() {
   const [user, setUser] = useState(dev ? defaultUser : null);
-  const renderMainPage = (props) => (
-    <LoginScreen onLogin={setUser} {...props} />
-  );
+  const renderMainPage = props => <LoginScreen onLogin={setUser} {...props} />;
 
   const onExchange = (starsGiven, moneyTaken) => {
     if (moneyTaken > user.moneyBalance) return;
-    setUser({...user, starsBalance: user.starsBalance + starsGiven, moneyBalance: user.moneyBalance - moneyTaken})
+    setUser({
+      ...user,
+      starsBalance: user.starsBalance + starsGiven,
+      moneyBalance: user.moneyBalance - moneyTaken
+    });
   };
-  const renderExchangePage = (props) => <ExchangeScreen onExchange={onExchange} {...props}></ExchangeScreen>;
+  const renderExchangePage = props => (
+    <ExchangeScreen onExchange={onExchange} {...props} />
+  );
 
-  const onBalanceChange = (moneyBalance) => {
+  const onBalanceChange = moneyBalance => {
     console.log('balance:', moneyBalance);
-    setUser({...user, moneyBalance});
+    setUser({ ...user, moneyBalance });
   };
-  const renderAccountPage = (props) => <AccountScreen onBalanceChange={onBalanceChange} {...props}></AccountScreen>
+  const renderAccountPage = props => (
+    <AccountScreen onBalanceChange={onBalanceChange} {...props} />
+  );
 
   return (
     <ThemeProvider theme={theme}>
@@ -59,10 +65,13 @@ const App = function() {
         <Fragment>
           <Router>
             <Switch>
-              <Route exact path="/" render={renderMainPage} />
+              <Route exact path="/" component={LoginScreen} />
               <PrivateRoute path="/tutorial" component={TutorialScreen} />
               <PrivateRoute path="/account" component={renderAccountPage} />
-              <PrivateRoute path="/achievements" component={AchievementsScreen} />
+              <PrivateRoute
+                path="/achievements"
+                component={AchievementsScreen}
+              />
               <PrivateRoute path="/exchange" component={renderExchangePage} />
               <PrivateRoute path="/social" component={SocialScreen} />
               <PrivateRoute path="/game" component={GameScreen} />
@@ -74,11 +83,8 @@ const App = function() {
         </Fragment>
       </UserContext.Provider>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-render(
-  <App />,
-  document.getElementById('root')
-);
+render(<App />, document.getElementById('root'));
 serviceWorker.unregister();

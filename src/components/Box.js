@@ -24,7 +24,7 @@ const Box = styled('div')`
       text-align: center;
     `}
 
-  ${({ wide, theme }) =>
+  ${({ wide }) =>
     wide &&
     css`
       display: flex;
@@ -41,13 +41,21 @@ const Box = styled('div')`
     square &&
     css`
       display: inline-block;
-      margin-bottom: 2rem;
-      flex: 1;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: ${theme.font.size.label.tertiary};
 
       img {
-        max-width: 4rem;
+        max-width: 6rem;
       }
     `}
+
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      background-color: ${({ theme }) => theme.color.elements.light};
+    `}
+
 `;
 
 export default Box;

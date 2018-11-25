@@ -62,7 +62,7 @@ const theme = {
     line: '3px'
   },
   effects: {
-    shadow: '0 3px 15px 0 rgba(0, 0, 0, 0.06)',
+    shadow: '0 4px 2px 0 rgba(0, 0, 0, 0.1)',
     transition: {
       quick: '0.2s ease-out',
       base: '0.4s ease-out',

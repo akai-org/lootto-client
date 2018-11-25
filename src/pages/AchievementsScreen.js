@@ -10,10 +10,14 @@ import StarCount from '../components/StarCount';
 import Layout from '../components/Layout';
 import BackButton from '../components/BackButton';
 import useAchievements from '../hooks/useAchievements';
+import usePopup from '../hooks/usePopup';
 import { Column } from '../components/Columns';
+import Grid from '../components/Grid';
+import Popup from '../components/Popup';
 
 export default function GameScreen() {
   const [achievements, setAchievements] = useAchievements();
+  const [popup, setPopup] = usePopup();
 
   if (!achievements.loaded) {
     fetch(`${process.env.REACT_APP_API}/user/achievements`)
@@ -27,21 +31,60 @@ export default function GameScreen() {
     <div>
       <Layout distributed spanned narrow>
         <BackButton />
-        <Column>
+        <h1>Osiągnięcia</h1>
+        {popup.isActive ? (
+          <Popup
+            name={popup.name}
+            description={popup.description}
+            close={() => {
+              setPopup({ isActive: false });
+            }}
+          />
+        ) : (
+          <div />
+        )}
+        <Grid autofill>
           {achievements.loaded &&
-            achievements.list.map(achievement => (
-              <Box square>
-                <img src="/images/Chest.png" />
-                <div className="chest__text">
+            achievements.list.map((achievement, index) => {
+              const initialProps = {
+                key: index,
+                square: true,
+                onClick: () => {
+                  setPopup({
+                    name: achievement.name,
+                    description: achievement.description,
+                    isActive: true
+                  });
+                }
+              };
+              return (
+                <Box selected={achievement.selectedAchievement == index}>
+                  <img
+                    src={
+                      achievement.imageUrl
+                        ? achievement.imageUrl
+                        : getRandomImage()
+                    }
+                    alt={achievement.name}
+                  />
+                  {/* <div className="chest__text">
                   {achievement.name && <strong>{achievement.name}</strong>}
-                </div>
-              </Box>
-            ))}
-        </Column>
-        <Button as="input" type="submit" secondary>
-          Zaloguj się przez facebook
-        </Button>
+                </div> */}
+                </Box>
+              );
+            })}
+        </Grid>
       </Layout>
     </div>
   );
+}
+
+function getRandomImage() {
+  const possibleChoices = [
+    '/images/cup.png',
+    '/images/trophy-red.png',
+    '/images/trophy-purple.png'
+  ];
+
+  return possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
 }

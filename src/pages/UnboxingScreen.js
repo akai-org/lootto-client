@@ -136,7 +136,7 @@ const UnboxingScreen = () => {
   if (stage === 4) {
     setTimeout(() => {
       setStage(5);
-    }, 1000);
+    }, 400);
   }
 
   if (stage === 5) {

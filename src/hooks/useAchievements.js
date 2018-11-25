@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useChests() {
+export default function useAchievements() {
   const [item, setInnerValue] = useState(() => {
     return {
       loaded: false,
@@ -8,9 +8,9 @@ export default function useChests() {
     };
   });
 
-  const setChests = value => {
+  const setAchievements = value => {
     setInnerValue(value);
   };
 
-  return [item, setChests];
+  return [item, setAchievements];
 }
