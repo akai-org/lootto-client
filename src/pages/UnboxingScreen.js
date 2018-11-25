@@ -130,7 +130,7 @@ const UnboxingScreen = () => {
   }
 
   if (stage === 5) {
-    return <Redirect to="/" />;
+    return <Redirect to="/reward" />;
   }
 
   return (

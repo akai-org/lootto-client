@@ -82,9 +82,7 @@ const MapScreen = props => {
                     key={marker.name}
                     position={marker.coordinates}
                     icon={iconTypeToIcon(marker.type)}
-                    onClick={() =>
-                      (window.location.pathname = "/planet?" + marker.id)
-                    }
+                    onClick={() => (window.location.pathname = "/planet")}
                   >
                     <Popup>
                       You are too far, try to get a little bit closer.

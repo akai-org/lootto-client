@@ -45,7 +45,15 @@ export default function GameScreen() {
                   {/* {chest.price && <span>{chest.price}</span>} */}
                   <StarCount>5</StarCount>
                 </div>
-                <Button primary small narrow>
+                <Button
+                  primary
+                  small
+                  narrow
+                  onClick={() =>
+                    (window.location.href =
+                      window.location.origin + "/unboxing")
+                  }
+                >
                   otwórz
                 </Button>
               </Box>
