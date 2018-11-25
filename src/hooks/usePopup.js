@@ -6,7 +6,8 @@ export default function useDescription() {
       isActive: false,
       name: '',
       description: '',
-      zoom: ''
+      zoom: '',
+      selectedAchievement: -1
     };
   });
 

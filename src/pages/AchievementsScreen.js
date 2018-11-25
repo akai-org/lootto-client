@@ -45,30 +45,34 @@ export default function GameScreen() {
         )}
         <Grid autofill>
           {achievements.loaded &&
-            achievements.list.map(achievement => (
-              <Box
-                square
-                onClick={() => {
+            achievements.list.map((achievement, index) => {
+              const initialProps = {
+                key: index,
+                square: true,
+                onClick: () => {
                   setPopup({
                     name: achievement.name,
                     description: achievement.description,
                     isActive: true
                   });
-                }}
-              >
-                <img
-                  src={
-                    achievement.imageUrl
-                      ? achievement.imageUrl
-                      : getRandomImage()
-                  }
-                  alt={achievement.name}
-                />
-                {/* <div className="chest__text">
+                }
+              };
+              return (
+                <Box selected={achievement.selectedAchievement == index}>
+                  <img
+                    src={
+                      achievement.imageUrl
+                        ? achievement.imageUrl
+                        : getRandomImage()
+                    }
+                    alt={achievement.name}
+                  />
+                  {/* <div className="chest__text">
                   {achievement.name && <strong>{achievement.name}</strong>}
                 </div> */}
-              </Box>
-            ))}
+                </Box>
+              );
+            })}
         </Grid>
       </Layout>
     </div>

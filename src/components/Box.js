@@ -49,6 +49,13 @@ const Box = styled('div')`
         max-width: 6rem;
       }
     `}
+
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      background-color: ${({ theme }) => theme.color.elements.light};
+    `}
+
 `;
 
 export default Box;
