@@ -3,6 +3,7 @@ import { Map, TileLayer, Marker, Popup, Rectangle } from "react-leaflet";
 import styled from "react-emotion";
 import "../../node_modules/leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
+import { Link } from "react-router-dom";
 
 const markerPlanet1 = icon({
   iconUrl: require("../assets/planet1.png"),
@@ -87,15 +88,15 @@ const MapScreen = props => {
             ? markers.map(marker =>
                 marker.show ? (
                   <Link to="/planet">
-                  <Marker
-                    key={marker.name}
-                    position={marker.coordinates}
-                    icon={iconTypeToIcon(marker.type)}
-                  >
-                    <Popup>
-                      You are too far, try to get a little bit closer.
-                    </Popup>
-                  </Marker>
+                    <Marker
+                      key={marker.name}
+                      position={marker.coordinates}
+                      icon={iconTypeToIcon(marker.type)}
+                    >
+                      <Popup>
+                        You are too far, try to get a little bit closer.
+                      </Popup>
+                    </Marker>
                   </Link>
                 ) : null
               )
