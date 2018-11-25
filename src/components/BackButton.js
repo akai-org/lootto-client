@@ -10,7 +10,7 @@ const BackIcon = styled('a')`
   padding: 1rem;
   margin: -1rem;
   width: 1.5rem;
-  
+
   img {
     margin-bottom: 2rem;
   }

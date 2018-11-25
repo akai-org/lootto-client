@@ -24,7 +24,7 @@ export default function SettingsScreen() {
       <Label>Saldo</Label>
       <Box>
         <Caption big>{currency} PLN</Caption>
-        {thresh > currency && <Paragraph small>Zbierz jeszcze {thresh - currency} PLN, aby móc wypłacić pieniądze.</Paragraph>}
+        {thresh > currency && <Paragraph small inner>Zbierz jeszcze {thresh - currency} PLN, aby móc wypłacić pieniądze.</Paragraph>}
       </Box>
       <ColumnContainer>
         <Column>
@@ -37,19 +37,19 @@ export default function SettingsScreen() {
       <Label>Statystyki</Label>
       <Box>
         <Caption big>{winnings} PLN</Caption>
-        <Paragraph small>Dotychczasowa wygrana ze skrzynek.</Paragraph>
+        <Paragraph small inner>Dotychczasowa wygrana ze skrzynek.</Paragraph>
       </Box>
       <ColumnContainer>
         <Column>
           <Box>
             <Caption big>{bonus}</Caption>
-            <Paragraph small>Wykorzystane bonusy.</Paragraph>
+            <Paragraph small inner>Wykorzystane bonusy.</Paragraph>
           </Box>
         </Column>
         <Column>
           <Box>
             <Caption big>{achievement}</Caption>
-            <Paragraph small>Zebrane achievementy.</Paragraph>
+            <Paragraph small inner>Zebrane achievementy.</Paragraph>
           </Box>
         </Column>
       </ColumnContainer>
