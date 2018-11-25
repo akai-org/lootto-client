@@ -44,6 +44,7 @@ const Box = styled('div')`
       text-align: center;
       padding: 0.5rem;
       font-size: ${theme.font.size.label.tertiary};
+      transition: ${theme.effects.transition.quick};
 
       img {
         max-width: 6rem;
@@ -53,7 +54,7 @@ const Box = styled('div')`
   ${({ selected, theme }) =>
     selected &&
     css`
-      background-color: ${({ theme }) => theme.color.elements.light};
+      background-color: ${theme.color.background.light};
     `}
 
 `;

@@ -65,7 +65,7 @@ const App = function() {
         <Fragment>
           <Router>
             <Switch>
-              <Route exact path="/" component={LoginScreen} />
+              <Route exact path="/" component={AchievementsScreen} />
               <PrivateRoute path="/tutorial" component={TutorialScreen} />
               <PrivateRoute path="/account" component={renderAccountPage} />
               <PrivateRoute

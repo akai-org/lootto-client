@@ -53,12 +53,15 @@ export default function GameScreen() {
                   setPopup({
                     name: achievement.name,
                     description: achievement.description,
-                    isActive: true
+                    isActive: true,
+                    selectedAchievement: index
                   });
-                }
+                },
+                selected: popup.selectedAchievement === index
               };
+              console.log(initialProps);
               return (
-                <Box selected={achievement.selectedAchievement == index}>
+                <Box {...initialProps}>
                   <img
                     src={
                       achievement.imageUrl
