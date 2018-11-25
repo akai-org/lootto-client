@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react';
-import Layout from '../components/Layout';
-import PropTypes from 'prop-types';
-import Logo from '../components/Logo';
-import Button from '../components/Button';
-import Particles from '../components/Particles.js';
-import Astronaut from '../components/Astronaut';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { Redirect } from 'react-router-dom';
-import useCookie from '../hooks/useCookie';
+import React, { Fragment } from "react";
+import Layout from "../components/Layout";
+import PropTypes from "prop-types";
+import Logo from "../components/Logo";
+import Button from "../components/Button";
+import Particles from "../components/Particles.js";
+import Astronaut from "../components/Astronaut";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import { Redirect } from "react-router-dom";
+import useCookie from "../hooks/useCookie";
 
 export default function LoginScreen(props) {
-  const { history, onLogin } = props;
-  const [token, setToken] = useCookie('token', '');
-  const [tutorialCompleted] = useCookie('tutorialCompleted', false);
+  const { history } = props;
+  const [token, setToken] = useCookie("token", "");
+  const [tutorialCompleted] = useCookie("tutorialCompleted", false);
 
   if (token) return <Redirect to="/game" />;
 
@@ -45,14 +45,14 @@ export default function LoginScreen(props) {
                 body: JSON.stringify({
                   access_token: response.accessToken
                 })
-              }).then(res => res.json())
+              })
+                .then(res => res.json())
                 .then(json => {
-                  onLogin(json);
-
+                  console.log(json);
                   if (tutorialCompleted) {
-                    history.push('/game');
+                    history.push("/game");
                   } else {
-                    history.push('/tutorial');
+                    history.push("/tutorial");
                   }
                 });
             }
