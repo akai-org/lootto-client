@@ -59,7 +59,7 @@ const App = function() {
     <AccountScreen onBalanceChange={onBalanceChange} {...props} />
   );
 
-  const onReward = (wonStars) => {
+  const onReward = wonStars => {
     setUser({ ...user, starsBalance: user.starsBalance + wonStars });
   };
   const renderRewardPage = props => (

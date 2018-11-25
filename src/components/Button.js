@@ -17,6 +17,7 @@ const Button = styled('button')`
   border: ${({ theme }) => theme.size.line} solid
     ${({ theme }) => theme.color.accent.primary.light};
   color: ${({ theme }) => theme.color.text.primary};
+  min-height: 60px;
 
   ${({ primary, theme }) =>
     primary &&
