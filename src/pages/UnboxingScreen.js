@@ -60,6 +60,8 @@ const ChestWrapper = styled('div')`
 `;
 
 const ChestImage = styled('img')`
+  filter: hue-rotate(${({ chestType }) => chestType});
+
   &.opening {
     animation: shake 1s;
   }
@@ -100,8 +102,16 @@ const ChestImage = styled('img')`
   }
 `;
 
+const boxTypeToColor = type => {
+  if (type === '4') return '100deg';
+  else if (type === '3') return '200deg';
+  return '0deg';
+};
+
 const UnboxingScreen = () => {
   const [stage, setStage] = useState(0);
+
+  const chestType = window.location.search.split('=')[1];
 
   const classes = ['', 'opening', 'calming', 'white', 'done', 'done'];
 
@@ -130,7 +140,7 @@ const UnboxingScreen = () => {
   }
 
   if (stage === 5) {
-    return <Redirect to="/reward" />;
+    return <Redirect to={`/reward?type=${chestType}`} />;
   }
 
   return (
@@ -139,6 +149,7 @@ const UnboxingScreen = () => {
 
       <ChestWrapper>
         <ChestImage
+          chestType={boxTypeToColor(chestType)}
           className={classes[stage]}
           src={Chest}
           onClick={() => {

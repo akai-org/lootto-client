@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { Map, TileLayer, Marker, Popup, Rectangle } from "react-leaflet";
-import styled from "react-emotion";
-import "../../node_modules/leaflet/dist/leaflet.css";
-import { icon } from "leaflet";
+import React, { useState, useEffect } from 'react';
+import { Map, TileLayer, Marker, Popup, Rectangle } from 'react-leaflet';
+import styled from 'react-emotion';
+import '../../node_modules/leaflet/dist/leaflet.css';
+import { icon } from 'leaflet';
+import { withRouter } from 'react-router';
 
 const markerPlanet1 = icon({
-  iconUrl: require("../assets/planet1.png"),
+  iconUrl: require('../assets/planet1.png'),
   iconSize: [50.38, 31.812]
 });
 
 const markerPlanet2 = icon({
-  iconUrl: require("../assets/planet2.png"),
+  iconUrl: require('../assets/planet2.png'),
   iconSize: [62.975, 39.765]
 });
 
 const iconTypeToIcon = type => {
-  if (type === "planet1") return markerPlanet1;
-  else if (type === "planet2") return markerPlanet2;
+  if (type === 'planet1') return markerPlanet1;
+  else if (type === 'planet2') return markerPlanet2;
 };
 
-const MapWrapper = styled("div")`
+const MapWrapper = styled('div')`
   .leaflet-container {
     width: 100vw;
     height: calc(100vh - 78px);
@@ -36,8 +37,8 @@ const MapWrapper = styled("div")`
 
 const MapScreen = props => {
   const [position, setPosition] = useState([
-    props.location.coords.latitude,
-    props.location.coords.longitude
+    props.userLocation.coords.latitude,
+    props.userLocation.coords.longitude
   ]);
 
   const [zoom, setZoom] = useState(16);
@@ -57,7 +58,7 @@ const MapScreen = props => {
           planetId: _id,
           name,
           type,
-          tags: ["default"],
+          tags: ['default'],
           show: true,
           coordinates: [longitude, latitude]
         }))
@@ -90,7 +91,9 @@ const MapScreen = props => {
                     key={marker.name}
                     position={marker.coordinates}
                     icon={iconTypeToIcon(marker.type)}
-                    onClick={() => (window.location.pathname = "/planet")}
+                    onClick={() => {
+                      props.history.push(`/planet?planetId=${marker.planetId}`);
+                    }}
                   >
                     <Popup>
                       You are too far, try to get a little bit closer.
@@ -105,4 +108,4 @@ const MapScreen = props => {
   );
 };
 
-export default MapScreen;
+export default withRouter(MapScreen);

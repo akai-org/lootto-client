@@ -24,7 +24,7 @@ injectGlobal(GlobalStyle);
 
 const dev = process.env.NODE_ENV == 'development';
 const defaultUser = {
-  moneyBalance: 0,
+  moneyBalance: 36,
   starsBalance: 14,
   experience: 0,
   powerUps: [],
@@ -39,6 +39,26 @@ const App = function() {
   const [user, setUser] = useState(dev ? defaultUser : null);
   const renderMainPage = props => <LoginScreen onLogin={setUser} {...props} />;
 
+  const onExchange = (starsGiven, moneyTaken) => {
+    if (moneyTaken > user.moneyBalance) return;
+    setUser({
+      ...user,
+      starsBalance: user.starsBalance + starsGiven,
+      moneyBalance: user.moneyBalance - moneyTaken
+    });
+  };
+  const renderExchangePage = props => (
+    <ExchangeScreen onExchange={onExchange} {...props} />
+  );
+
+  const onBalanceChange = moneyBalance => {
+    console.log('balance:', moneyBalance);
+    setUser({ ...user, moneyBalance });
+  };
+  const renderAccountPage = props => (
+    <AccountScreen onBalanceChange={onBalanceChange} {...props} />
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <UserContext.Provider value={user}>
@@ -47,12 +67,12 @@ const App = function() {
             <Switch>
               <Route exact path="/" component={AchievementsScreen} />
               <PrivateRoute path="/tutorial" component={TutorialScreen} />
-              <PrivateRoute path="/account" component={AccountScreen} />
+              <PrivateRoute path="/account" component={renderAccountPage} />
               <PrivateRoute
                 path="/achievements"
                 component={AchievementsScreen}
               />
-              <PrivateRoute path="/exchange" component={ExchangeScreen} />
+              <PrivateRoute path="/exchange" component={renderExchangePage} />
               <PrivateRoute path="/social" component={SocialScreen} />
               <PrivateRoute path="/game" component={GameScreen} />
               <PrivateRoute path="/planet" component={PlanetScreen} />

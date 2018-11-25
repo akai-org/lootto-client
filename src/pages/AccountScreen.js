@@ -8,14 +8,31 @@ import { ColumnContainer, Column } from "../components/Columns";
 import Button from "../components/Button";
 import Box from "../components/Box";
 import Paragraph from "../components/Paragraph";
+import useUser from "../hooks/useUser";
+import { authorizedRequest } from "../utils/request";
 
-export default function SettingsScreen() {
-  // Mock
-  const currency = 47;
+export default function SettingsScreen({ onBalanceChange }) {
+  const user = useUser();
+
+  const currency = user.moneyBalance;
   const thresh = 50;
   const winnings = 23;
   const bonus = 3;
   const achievement = 12;
+
+  const withdraw = () => {
+    if (user.moneyBalance < thresh) return;
+
+    const amount = thresh;
+    authorizedRequest('user/withdraw', { method: 'POST', body: { amount }})
+      .then(({moneyBalance}) => onBalanceChange(moneyBalance));
+  };
+
+  const deposit = () => {
+    const amount = 10;
+    authorizedRequest('user/deposit', { method: 'POST', body: { amount }})
+      .then(({moneyBalance}) => onBalanceChange(moneyBalance));
+  };
 
   return (
     <Layout spanned narrow>
@@ -28,10 +45,10 @@ export default function SettingsScreen() {
       </Box>
       <ColumnContainer>
         <Column>
-          <Button primary small>Zasil konto</Button>
+          <Button primary small onClick={deposit}>Zasil konto</Button>
         </Column>
         <Column>
-          <Button small>Wypłać</Button>
+          <Button small onClick={withdraw}>Wypłać</Button>
         </Column>
       </ColumnContainer>
       <Label>Statystyki</Label>
