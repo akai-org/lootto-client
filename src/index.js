@@ -59,6 +59,13 @@ const App = function() {
     <AccountScreen onBalanceChange={onBalanceChange} {...props} />
   );
 
+  const onReward = (wonStars) => {
+    setUser({ ...user, starsBalance: user.starsBalance + wonStars });
+  };
+  const renderRewardPage = props => (
+    <RewardScreen onReward={onReward} {...props} />
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <UserContext.Provider value={user}>
@@ -77,7 +84,7 @@ const App = function() {
               <PrivateRoute path="/game" component={GameScreen} />
               <PrivateRoute path="/planet" component={PlanetScreen} />
               <PrivateRoute path="/unboxing" component={UnboxingScreen} />
-              <PrivateRoute path="/reward" component={RewardScreen} />
+              <PrivateRoute path="/reward" component={renderRewardPage} />
             </Switch>
           </Router>
         </Fragment>
