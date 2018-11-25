@@ -12,6 +12,7 @@ import Grid from '../components/Grid';
 import { Link } from 'react-router-dom';
 import astronaut from '../assets/astronaut-ok.png';
 import styled from 'react-emotion';
+import { authorizedRequest } from "../utils/request";
 
 const Astronaut = styled('img')`
   width: 80%;
@@ -34,10 +35,16 @@ const boxTypeToAdditional = () => {
   return Math.floor(Math.random() * 5) + 1;
 };
 
-export default function RewardScreen() {
+export default function RewardScreen({ onReward }) {
   const user = useUser();
-
+  
   const chestType = window.location.search.split('=')[1];
+  const wonStars = boxTypeToPrize(chestType);
+
+  authorizedRequest("user/reward", {
+    method: "POST",
+    body: { wonStars }
+  }).then(() => onReward(wonStars));
 
   return (
     <div>
@@ -48,7 +55,7 @@ export default function RewardScreen() {
           <Label>Zdobywasz</Label>
           <Grid cols={2}>
             <Box>
-              <Caption big>{boxTypeToPrize(chestType)}</Caption>
+              <Caption big>{wonStars}</Caption>
               <Paragraph small inner>
                 Liczba gwiazdek
               </Paragraph>
