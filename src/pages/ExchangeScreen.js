@@ -55,15 +55,11 @@ export default function ExchangeScreen({ onExchange }) {
     if (user.moneyBalance < money) {
       return;
     }
-    authorizedRequest('user/buy', {method: 'POST', body: { stars, money }})
-      .then(() => onExchange(stars, money));
+    authorizedRequest("user/buy", {
+      method: "POST",
+      body: { stars, money }
+    }).then(() => onExchange(stars, money));
   };
-
-  // if (!wallet.loaded) {
-  //   fetch(`${process.env.REACT_APP_API}/user`)
-  //     .then(res => res.json())
-  //     .then(data => setWallet({ ...data.wallet, loaded: true }));
-  // }
 
   return (
     <Fragment>

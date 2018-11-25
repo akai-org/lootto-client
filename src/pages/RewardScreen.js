@@ -25,12 +25,6 @@ const Astronaut = styled("img")`
 export default function RewardScreen() {
   const [wallet, setWallet] = useWallet();
 
-  // if (!wallet.loaded) {
-  //   fetch(`${process.env.REACT_APP_API}/user`)
-  //     .then(res => res.json())
-  //     .then(data => setWallet({ ...data.wallet, loaded: true }));
-  // }
-
   return (
     <div>
       <Navbar stars={wallet.stars} />
