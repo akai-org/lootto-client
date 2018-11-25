@@ -7,7 +7,6 @@ import IconButton from './IconButton';
 import { Link } from 'react-router-dom';
 
 import burger from '../assets/burger.svg';
-import star from '../assets/star.svg';
 import plus from '../assets/plus.svg';
 import StarCount from '../components/StarCount';
 
@@ -17,6 +16,11 @@ const Header = styled('header')`
   padding: 2;
   display: flex;
   justify-content: space-between;
+
+  .menu__stars {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const MenuIcon = ({ onClick }) => (
@@ -38,8 +42,8 @@ function Navbar({ stars }) {
     <Layout>
       <Header>
         <MenuIcon onClick={showMenu} />
-        <div>
-          <StarCount>{stars}</StarCount>
+        <div className="menu__stars">
+          <StarCount big>{stars}</StarCount>
           <Link to="/exchange">
             <IconButton src={plus} width="12" height="12" />
           </Link>
