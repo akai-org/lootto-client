@@ -44,6 +44,7 @@ const Layout = styled('div')`
     inner &&
     css`
       padding-top: 0;
+      padding-bottom: 0;
     `}
 
   ${({ inner, spanned, theme }) =>
