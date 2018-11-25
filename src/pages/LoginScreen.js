@@ -37,14 +37,14 @@ export default function LoginScreen(props) {
 
               setToken(response.accessToken);
 
-              fetch(`${process.env.REACT_ENV_API}/register`, {
+              fetch(`${process.env.REACT_ENV_API}/auth`, {
                 method: "POST",
                 body: JSON.stringify({
-                  t: response.accessToken
+                  token: response.accessToken
                 })
-              })
-                .then(res => res.json())
+              }).then(res => res.json())
                 .then(json => {
+                  console.log(json);
                   if (tutorialCompleted) {
                     history.push("/game");
                   } else {
