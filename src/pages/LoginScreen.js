@@ -40,7 +40,7 @@ export default function LoginScreen(props) {
               fetch(`${process.env.REACT_APP_API}/auth`, {
                 method: "POST",
                 body: JSON.stringify({
-                  token: response.accessToken
+                  access_token: response.accessToken
                 })
               }).then(res => res.json())
                 .then(json => {
