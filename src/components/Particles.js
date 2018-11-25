@@ -48,7 +48,7 @@ export default asd => (
     }}
     style={{
       width: '100%',
-      backgroundColor: `#0f2432`,
+      backgroundColor: `#0f243B`,
       position: 'absolute',
       zIndex: '-1'
     }}
