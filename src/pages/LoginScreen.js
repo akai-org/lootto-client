@@ -27,7 +27,7 @@ export default function LoginScreen(props) {
     <Fragment>
       <Astronaut floatFromSide />
       <Particles />
-      <Layout distributed spanned narrow>
+      <Layout distributed fitted narrow>
         <Logo
           welcome
           title="Lootto"
