@@ -18,6 +18,11 @@ const Box = styled('div')`
     font-weight: ${({ theme }) => theme.font.weight.bold};
   }
 
+  .chest__text {
+    flex: 1;
+    margin-left: 14px;
+  }
+
   ${({ center }) =>
     center &&
     css`
