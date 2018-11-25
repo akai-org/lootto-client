@@ -11,6 +11,7 @@ import Layout from '../components/Layout';
 import BackButton from '../components/BackButton';
 import useAchievements from '../hooks/useAchievements';
 import { Column } from '../components/Columns';
+import Grid from '../components/Grid';
 
 export default function GameScreen() {
   const [achievements, setAchievements] = useAchievements();
@@ -27,7 +28,7 @@ export default function GameScreen() {
     <div>
       <Layout distributed spanned narrow>
         <BackButton />
-        <Column>
+        <Grid autofill>
           {achievements.loaded &&
             achievements.list.map(achievement => (
               <Box square>
@@ -37,7 +38,7 @@ export default function GameScreen() {
                 </div>
               </Box>
             ))}
-        </Column>
+        </Grid>
         <Button as="input" type="submit" secondary>
           Zaloguj się przez facebook
         </Button>

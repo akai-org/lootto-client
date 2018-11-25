@@ -15,18 +15,16 @@ import GlobalStyle from './styles/GlobalStyle';
 import ExchangeScreen from './pages/ExchangeScreen';
 import UnboxingScreen from './pages/UnboxingScreen';
 import PlanetScreen from './pages/PlanetScreen';
-import AccountScreen from "./pages/AccountScreen";
-import SocialScreen from "./pages/SocialScreen";
-import RewardScreen from "./pages/RewardScreen";
-import UserContext from "./contexts/UserContext";
+import AccountScreen from './pages/AccountScreen';
+import SocialScreen from './pages/SocialScreen';
+import RewardScreen from './pages/RewardScreen';
+import UserContext from './contexts/UserContext';
 
 injectGlobal(GlobalStyle);
 
 const App = function() {
   const [user, setUser] = useState(null);
-  const renderMainPage = (props) => (
-    <LoginScreen onLogin={setUser} {...props} />
-  );
+  const renderMainPage = props => <LoginScreen onLogin={setUser} {...props} />;
 
   return (
     <ThemeProvider theme={theme}>
@@ -34,10 +32,13 @@ const App = function() {
         <Fragment>
           <Router>
             <Switch>
-              <Route exact path="/" render={renderMainPage} />
+              <Route exact path="/" component={AchievementsScreen} />
               <PrivateRoute path="/tutorial" component={TutorialScreen} />
               <PrivateRoute path="/account" component={AccountScreen} />
-              <PrivateRoute path="/achievements" component={AchievementsScreen} />
+              <PrivateRoute
+                path="/achievements"
+                component={AchievementsScreen}
+              />
               <PrivateRoute path="/exchange" component={ExchangeScreen} />
               <PrivateRoute path="/social" component={SocialScreen} />
               <PrivateRoute path="/game" component={GameScreen} />
@@ -49,11 +50,8 @@ const App = function() {
         </Fragment>
       </UserContext.Provider>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-render(
-  <App />,
-  document.getElementById('root')
-);
+render(<App />, document.getElementById('root'));
 serviceWorker.unregister();
