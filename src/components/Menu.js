@@ -112,7 +112,7 @@ const Menu = ({ isVisible, onClose }) => {
           ))}
         </MenuUl>
         <Wrapper>
-          <Button onClick={logout} tertiary>
+          <Button tertiary>
             Wyloguj
           </Button>
         </Wrapper>
