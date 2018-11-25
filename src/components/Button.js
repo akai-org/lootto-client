@@ -39,6 +39,12 @@ const Button = styled('button')`
       width: initial;
       min-height: initial;
     `}
+
+    ${({ offset }) =>
+      offset &&
+      css`
+        margin-bottom: 20px;
+      `}
 `;
 
 export default Button;

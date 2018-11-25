@@ -83,7 +83,9 @@ const GameScreen = function(props) {
             ))}
         </ColumnList>
         <Link to="/game">
-          <Button secondary>Powrót do mapy</Button>
+          <Button secondary offset>
+            Powrót do mapy
+          </Button>
         </Link>
       </Layout>
     </div>
