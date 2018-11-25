@@ -1,23 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import useWallet from "../hooks/useWallet";
-import useChests from "../hooks/useChests";
-import Navbar from "../components/Navbar";
-import ColumnList from "../components/ColumnList";
-import Box from "../components/Box";
-import Button from "../components/Button";
-import StarCount from "../components/StarCount";
-import Layout from "../components/Layout";
+import React from 'react';
+import useWallet from '../hooks/useWallet';
+import useChests from '../hooks/useChests';
+import Navbar from '../components/Navbar';
+import ColumnList from '../components/ColumnList';
+import Box from '../components/Box';
+import Button from '../components/Button';
+import StarCount from '../components/StarCount';
+import Layout from '../components/Layout';
+import { withRouter } from 'react-router';
 
-export default function GameScreen() {
+const GameScreen = props => {
   const [wallet, setWallet] = useWallet();
   const [chests, setChests] = useChests();
 
+  const planetId = window.location.search.split('=')[1];
+
   if (!chests.loaded) {
-    fetch(`${process.env.REACT_APP_API}/planet`)
+    fetch(`${process.env.REACT_APP_API}/planet/${planetId}`)
       .then(res => res.json())
       .then(list => {
-        setChests({ list, loaded: true });
+        setChests({ list: list.chests, loaded: true });
       });
   }
 
@@ -29,7 +31,23 @@ export default function GameScreen() {
   //     });
   // }
 
-  console.log(chests);
+  const boxTypeToColor = type => {
+    if (type === 'chest4') return '100deg';
+    else if (type === 'chest3') return '200deg';
+    return '0deg';
+  };
+
+  const boxTypeToPrice = type => {
+    if (type === 'chest4') return 10;
+    else if (type === 'chest3') return 20;
+    return 5;
+  };
+
+  const boxTypeToName = type => {
+    if (type === 'chest4') return 'Super Lootto';
+    else if (type === 'chest3') return 'Hiper Mega Lootto';
+    return 'Lootto';
+  };
 
   return (
     <div>
@@ -38,21 +56,26 @@ export default function GameScreen() {
         <ColumnList>
           {chests.loaded &&
             chests.list.map(chest => (
-              <Box wide>
+              <Box
+                key={chest.name}
+                wide
+                boxType={() => boxTypeToColor(chest.type)}
+              >
                 <img src="/images/Chest.png" />
                 <div className="chest__text">
-                  {chest.name && <strong>{chest.name}</strong>}
+                  {chest.name && <strong>{boxTypeToName(chest.type)}</strong>}
                   {/* {chest.price && <span>{chest.price}</span>} */}
-                  <StarCount>5</StarCount>
+                  <StarCount>{boxTypeToPrice(chest.type)}</StarCount>
                 </div>
                 <Button
                   primary
                   small
                   narrow
-                  onClick={() =>
-                    (window.location.href =
-                      window.location.origin + "/unboxing")
-                  }
+                  onClick={() => {
+                    props.history.push(
+                      `/unboxing?type=${chest.type[chest.type.length - 1]}`
+                    );
+                  }}
                 >
                   otwórz
                 </Button>
@@ -60,9 +83,11 @@ export default function GameScreen() {
             ))}
         </ColumnList>
         <Button as="input" type="submit" secondary>
-          Zaloguj się przez facebook
+          Powrót do mapy
         </Button>
       </Layout>
     </div>
   );
-}
+};
+
+export default withRouter(GameScreen);
