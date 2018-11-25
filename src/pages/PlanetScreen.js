@@ -12,10 +12,8 @@ const GameScreen = function(props) {
   const user = useUser();
   const [chests, setChests] = useState({ loaded: false, list: [] }); //useChests();
 
-  const planetId = window.location.search.split('=')[1];
-  console.log(chests);
-
   if (!chests.loaded) {
+    const planetId = window.location.search.split('=')[1];
     fetch(`${process.env.REACT_APP_API}/planet/${planetId}`)
       .then(res => res.json())
       .then(list => {
