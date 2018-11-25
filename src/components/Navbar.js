@@ -13,7 +13,7 @@ import StarCount from '../components/StarCount';
 const Header = styled('header')`
   background: ${props => props.theme.color.accent.primary.base};
   color: #fff;
-  padding: 2;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
 

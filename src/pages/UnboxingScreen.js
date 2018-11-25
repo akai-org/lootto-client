@@ -4,7 +4,8 @@ import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Paragraph from "../components/Paragraph";
 import Image from "../components/Image";
-import Particles from "react-particles-js";
+import Particles from "../components/Particles";
+import { Redirect } from "react-router-dom";
 
 import Chest from "../assets/Chest.png";
 
@@ -41,7 +42,8 @@ const WrapperWrapper = styled("div")`
     opacity: 1;
   }
 
-  &.white {
+  &.white,
+  &.done {
     background: #ffff;
     > div {
       opacity: 0;
@@ -54,7 +56,7 @@ const ChestWrapper = styled("div")`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75%;
+  width: 64%;
 `;
 
 const ChestImage = styled("img")`
@@ -94,14 +96,14 @@ const ChestImage = styled("img")`
   }
 
   &.done {
-    display: block;
+    display: none;
   }
 `;
 
 const UnboxingScreen = () => {
   const [stage, setStage] = useState(0);
 
-  const classes = ["", "opening", "calming", "white", "done"];
+  const classes = ["", "opening", "calming", "white", "done", "done"];
 
   if (stage === 1) {
     setTimeout(() => {
@@ -121,33 +123,19 @@ const UnboxingScreen = () => {
     }, 1000);
   }
 
+  if (stage === 4) {
+    setTimeout(() => {
+      setStage(5);
+    }, 1000);
+  }
+
+  if (stage === 5) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <WrapperWrapper className={classes[stage]}>
-      <Particles
-        className="particle-1"
-        params={{
-          polygon: {
-            enable: true,
-            type: "inside",
-            move: {
-              radius: 10
-            }
-          }
-        }}
-      />
-
-      <Particles
-        className="particle-2"
-        params={{
-          polygon: {
-            enable: true,
-            type: "inside",
-            move: {
-              radius: 100
-            }
-          }
-        }}
-      />
+      <Particles />
 
       <ChestWrapper>
         <ChestImage
