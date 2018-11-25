@@ -1,6 +1,5 @@
-import React from 'react';
-import useUser from '../hooks/useWallet';
-import useChests from '../hooks/useChests';
+import React, { useState } from 'react';
+import useUser from '../hooks/useUser';
 import Navbar from '../components/Navbar';
 import ColumnList from '../components/ColumnList';
 import Box from '../components/Box';
@@ -11,7 +10,7 @@ import { withRouter } from 'react-router';
 
 const GameScreen = function(props) {
   const user = useUser();
-  const [chests, setChests] = useChests();
+  const [chests, setChests] = useState({ loaded: false, list: [] }); //useChests();
 
   const planetId = window.location.search.split('=')[1];
   console.log(chests);
